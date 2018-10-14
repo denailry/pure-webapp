@@ -6,6 +6,9 @@
     <body>
         <form method="POST">
             <div>
+                <?php getvar("failure"); ?>
+            </div>
+            <div>
                 <label for="username">Username:</label>
                 <input id="username" type="text" name="username">
             </div>

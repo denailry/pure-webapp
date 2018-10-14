@@ -3,7 +3,7 @@
     $username = "root";
     $password = "";
     $dbname = "tugasbesar1_2018";
-    $current_version = 1;
+    $current_version = 2;
     
     $conn = new mysqli($servername, $username, $password, $dbname);
     

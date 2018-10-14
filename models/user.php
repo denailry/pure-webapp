@@ -32,16 +32,20 @@
 
         static function verify($email, $password) {
             global $conn;
-            $query = $conn->prepare("SELECT `email`, `password` FROM user WHERE email=?");
+            $query = $conn->prepare("SELECT `id`, `email`, `password` FROM user WHERE email=?");
             $query->bind_param('s', $email);
             $query->execute();
 
             $result = mysqli_stmt_get_result($query);
             if (mysqli_num_rows($result) == 0) {
-                return FALSE;
+                return -1;
             } else {
                 $obj = mysqli_fetch_row($result);
-                return $obj[1] == $password;
+                if ($obj[2] == $password) {
+                    return $obj[0];
+                } else {
+                    return -1;
+                }
             }
         }
 

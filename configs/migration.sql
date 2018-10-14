@@ -16,3 +16,13 @@ CREATE TABLE user (
     UNIQUE (username)
 );
 UPDATE version SET `number`=1;
+
+-- Version 2
+CREATE TABLE session (
+    access_token VARCHAR(32),
+    id_user INT UNSIGNED,
+    expire_time BIGINT UNSIGNED,
+    PRIMARY KEY (access_token),
+    FOREIGN KEY (id_user) REFERENCES user (id)
+);
+UPDATE version SET `number`=2;

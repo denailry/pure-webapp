@@ -1,18 +1,40 @@
 <?php
-    require "models/user.php";
-    require "utils/common.php";
-    require "utils/page_var.php";
+    require_once "utils/validation.php";
+    require_once "models/user.php";
+    require_once "models/session.php";
+    require_once "utils/common.php";
+    require_once "utils/page_var.php";
+
+    if ($SESSION != null) {
+        header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018/');
+        die();  
+    }
+
+    function setup_session($userId) {
+        $session = Session::new($userId);
+        if ($session != null) {
+            setcookie('access_token', $session->get_token(), time() + 86400, "/");    
+        }
+        return ($session != null);
+    }
 
     if (isset($_POST["submit"])) {
         if (are_set($_POST, array('username', 'password'))) {
-            if (User::verify($_POST['username'], $_POST['password'])) {
-                header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018/');
-                die();
+            $userId = User::verify($_POST['username'], $_POST['password']);
+            if ($userId != -1) {
+                if (setup_session($userId)) {
+                    header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018/');
+                    die();   
+                } else {
+                    setvar('failure', 'please try again');
+                }   
+            } else {
+                setvar('failure', 'wrong username or password');
             }
         } else {
-            setvar('register_fail', 'lack of some fields');
+            setvar('failure', 'lack of some fields');
         }
     }
 
-    include "views/login.html";
+    include "views/login.php";
 ?>
