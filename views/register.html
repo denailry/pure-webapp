@@ -4,7 +4,7 @@
         <title>Login</title>
     </head>
     <body>
-        <form>
+        <form method="POST">
             <div>
                 <label for="name">Name:</label>
                 <input id="name" type="text" name="name">
@@ -27,11 +27,14 @@
             </div>
             <div>
                 <label for="address">Address:</label>
-                <textarea id="address"></textarea>
+                <textarea id="address" name="address"></textarea>
             </div>
             <div>
                 <label for="phone">Phone:</label>
                 <input id="phone" type="tel" name="phone">
+            </div>
+            <div>
+                <button name="submit">Submit</button>
             </div>
         </form>
     </body>
