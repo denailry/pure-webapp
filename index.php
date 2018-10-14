@@ -11,7 +11,7 @@
 		"login",
 		"register"
 	);
-	
+
 	$url_matched = false;
 	foreach ($available_urls as $url) {
 		if ($url == $controller) {
@@ -20,7 +20,9 @@
 			break;
 		}
 	}
-	if (!$url_matched) {
+	if (strlen($controller) == 0) {
+		require "controllers/home.php";
+	} else if (!$url_matched) {
 		echo "Nothing to see.";
 	}
 ?>
