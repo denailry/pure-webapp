@@ -1,4 +1,6 @@
 <?php
+	require "configs/db.php"; 
+	
 	$clean_url = explode("?", $_SERVER['REQUEST_URI'])[0];
 	$request_url = explode("/", $clean_url);
 	$controller = $request_url[2];
