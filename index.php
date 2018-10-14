@@ -8,6 +8,9 @@
 		case 'login':
 			require "controllers/login.php";
 			break;
+		case 'register':
+			require "controllers/register.php";
+			break;
 		default:
 			echo "Nothing to see.";
 			break;
