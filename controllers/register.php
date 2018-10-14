@@ -3,8 +3,6 @@
     require "utils/common.php";
     require "utils/page_var.php";
 
-    var_dump($_POST);
-
     if (isset($_POST["submit"])) {
         if (are_set($_POST, array('name', 'username', 'email', 'password-1', 'address', 'phone'))) {
             $_POST['password'] = $_POST['password-1'];

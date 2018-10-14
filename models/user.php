@@ -31,15 +31,17 @@
         }
 
         static function verify($email, $password) {
-            $query = $conn->prepare("SELECT email, password FROM user WHERE email=?");
+            global $conn;
+            $query = $conn->prepare("SELECT `email`, `password` FROM user WHERE email=?");
             $query->bind_param('s', $email);
-            $result = $query->execute();
+            $query->execute();
 
+            $result = mysqli_stmt_get_result($query);
             if (mysqli_num_rows($result) == 0) {
                 return FALSE;
             } else {
-                $obj = mysqli_fetch_row($result)[0];
-                return $obj['password'] == $password;
+                $obj = mysqli_fetch_row($result);
+                return $obj[1] == $password;
             }
         }
 
