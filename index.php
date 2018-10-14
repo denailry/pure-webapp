@@ -1,5 +1,6 @@
 <?php
-	$request_url = explode("/", $_SERVER['REQUEST_URI']);
+	$clean_url = explode("?", $_SERVER['REQUEST_URI'])[0];
+	$request_url = explode("/", $clean_url);
 	$controller = $request_url[2];
 	$_SERVER['REQUEST_URI'] = "/".implode("/", array_slice($request_url, 3));
 	set_include_path($_SERVER["DOCUMENT_ROOT"]."/tugasbesar1_2018/");
