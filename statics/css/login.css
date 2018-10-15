@@ -1,0 +1,34 @@
+#box-wrapper {
+    display: flex; 
+    justify-content: center;
+}
+
+#box-container {
+    display: flex; 
+    flex-direction: column;
+}
+
+.box-center {
+    text-align: center;
+}
+
+.input-field {
+    text-align: right; 
+    width: 100px; 
+    margin-right: 10px;
+}
+
+.input-value {
+    width: 100px; 
+    margin-left: 10px;
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#failure-notif {
+    color: #ff0000;
+    display: none;
+}
