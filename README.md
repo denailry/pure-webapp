@@ -148,4 +148,3 @@ Asisten IF3110 2018
 Audry | Erick | Holy | Kevin J. | Tasya | Veren | Vincent H.
 
 Dosen : Yudistira Dwi Wardhana | Riza Satria Perdana | Muhammad Zuhri Catur Candra
-

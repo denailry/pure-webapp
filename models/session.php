@@ -1,6 +1,8 @@
 <?php
     require_once "configs/db.php";
 
+    define("SESSION_CLEAN_SCHEDULE", 86400);
+
     function generateRandomString($length=32) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -9,6 +11,18 @@
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    function triggerCleanSession() {
+        global $conn;
+        $query = $conn->query("SELECT `datestamp` FROM session_datestamp");
+        $obj = mysqli_fetch_row($query);
+        if (time() - $obj[0] > SESSION_CLEAN_SCHEDULE) {
+            $current_time = time();
+            $datestamp_threshold = $current_time - SESSION_CLEAN_SCHEDULE;
+            $query = $conn->query("DELETE FROM session WHERE `expire_time`<$datestamp_threshold");
+            $query = $conn->query("UPDATE session_stamp SET `datestamp`=$current_time");    
+        }
     }
 
     class Session {
@@ -34,24 +48,34 @@
             $query->bind_param('s', $accessToken);
             $query->execute();
             $result = mysqli_stmt_get_result($query);
-            
+
             if (mysqli_num_rows($result) == 0) {
+                $query->close();
                 return null;
             } else {
                 $obj = mysqli_fetch_row($result);
+                $query->close();
                 if ($obj[1] < time()) {
+                    $session = new Session();
+                    $session->accessToken = $accessToken;
+                    $session->remove();
                     return null;
                 } else {
                     $session = new Session();
                     $session->accessToken = $accessToken;
                     $session->userId = $obj[0];
                     $session->expireTime = $obj[1];
+                    if (time() - $obj[1] <= 900) {
+                        $session->renew();
+                    }
                     return $session;
                 }
             }
         }
 
         static function new($userId) {
+            triggerCleanSession();
+
             $session = new Session();
             $session->userId = $userId;
             $session->expireTime = time() + self::SESSION_DURATION;
@@ -67,6 +91,25 @@
             } while ($fail_counter < 3);
             
             return null;
+        }
+
+        function renew() {
+            $temp = $this->expireTime;
+            $this->expireTime = time() + self::SESSION_DURATION;
+            if (!$this->commit()) {
+                $this->expireTime = $temp;
+                return false;
+            }
+            return true;
+        }
+
+        function remove() {
+            global $conn;
+            $query = $conn->prepare("DELETE FROM session WHERE `access_token`=?");
+            $query->bind_param('s', $this->accessToken);
+            $result = $query->execute();
+            $query->close();
+            return $result;
         }
 
         function commit() {

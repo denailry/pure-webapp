@@ -25,4 +25,7 @@ CREATE TABLE session (
     PRIMARY KEY (access_token),
     FOREIGN KEY (id_user) REFERENCES user (id)
 );
+CREATE TABLE session_stamp (
+    datestamp BIGINT UNSIGNED NOT NULL
+);
 UPDATE version SET `number`=2;
