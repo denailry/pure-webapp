@@ -71,7 +71,7 @@
                             <?php getvar("failure"); ?>
                         </div>
                         <div id="box-link">
-                            <a href="register.php">Already have an account?</a>
+                            <a href="login.php">Already have an account?</a>
                         </div>
                         <div class="box-center">
                             <button name="submit">Register</button>
