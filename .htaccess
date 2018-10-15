@@ -1,9 +1,2 @@
-RewriteEngine on
-
-RewriteCond %{REQUEST_FILENAME}  -d
-RewriteRule  ^.*$  -  [L]
-
-RewriteCond %{REQUEST_FILENAME}  -f
-RewriteRule  ^.*$  -  [L]
-
-RewriteRule ^.*$    index.php [L]
+ErrorDocument 403 "Nothing to see."
+ErrorDocument 404 "Nothing to see."

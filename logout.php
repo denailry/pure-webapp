@@ -1,4 +1,5 @@
 <?php
+	require_once "configs/db.php"; 
     require_once "utils/validation.php";
     require_once "models/user.php";
     require_once "models/session.php";
@@ -9,6 +10,6 @@
         $SESSION->remove();
     }
 
-    header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018/');
+    header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018');
     die();  
 ?>

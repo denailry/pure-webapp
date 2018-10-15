@@ -12,7 +12,7 @@
     function force_login() {
         global $SESSION;
         if ($SESSION == null) {
-            header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018/login');
+            header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018/login.php');
             die();
         }   
     }
