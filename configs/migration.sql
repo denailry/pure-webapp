@@ -28,4 +28,5 @@ CREATE TABLE session (
 CREATE TABLE session_stamp (
     datestamp BIGINT UNSIGNED NOT NULL
 );
+INSERT INTO session_stamp VALUES(0);
 UPDATE version SET `number`=2;
