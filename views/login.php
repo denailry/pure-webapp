@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="statics/css/login.css">
+        <link rel="stylesheet" type="text/css" href="statics/css/form.css">
     </head>
     <body>
         <div id="box-wrapper">
@@ -30,7 +30,7 @@
                     <div id="failure-notif" class="box-center">
                         <?php getvar("failure"); ?>
                     </div>
-                    <div style="margin-top: 5px; margin-bottom: 10px;">
+                    <div id="box-link">
                         <a href="register.php">Dont't have an account?</a>
                     </div>
                     <div class="box-center">

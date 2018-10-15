@@ -14,21 +14,31 @@
 
 .input-field {
     text-align: right; 
-    width: 100px; 
+    width: 150px; 
     margin-right: 10px;
 }
 
 .input-value {
-    width: 100px; 
+    width: 150px; 
     margin-left: 10px;
 }
 
 .input-group {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 #failure-notif {
     color: #ff0000;
     display: none;
+}
+
+#box-link {
+    margin-top: 5px; 
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+#box-link a:visited {
+    color: #000000;
 }

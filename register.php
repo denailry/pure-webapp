@@ -20,5 +20,5 @@
         }
     }
 
-    include "views/register.html";
+    include "views/register.php";
 ?>
