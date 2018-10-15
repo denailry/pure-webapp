@@ -9,7 +9,8 @@
 
 	$available_urls = array(
 		"login",
-		"register"
+		"register",
+		"logout"
 	);
 
 	$url_matched = false;
