@@ -28,7 +28,6 @@
                         </div>
                     </div>
                     <div id="failure-notif" class="box-center">
-                        <?php getvar("failure"); ?>
                     </div>
                     <div id="box-link">
                         <a href="register.php">Dont't have an account?</a>
@@ -40,4 +39,11 @@
             </div>
         </div>
     </body>
+    <script src="statics/js/failure-notif.js"></script>
+    <script type="text/javascript">
+        let failure = <?php getvar("failure", true); ?>;
+        if (failure != null) {
+            showFailureNotif(failure);
+        }
+    </script>
 </html>

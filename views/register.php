@@ -79,16 +79,8 @@
             </div>
         </div>
     </body>
+    <script src="statics/js/failure-notif.js"></script>
     <script type="text/javascript">
-        let hideFailureNotif = function() {
-            document.getElementById("failure-notif").style.display = "none";
-        }
-        let showFailureNotif = function(message) {
-            document.getElementById("failure-notif").innerHTML = message;
-            document.getElementById("failure-notif").style.display = "block";
-            setTimeout(hideFailureNotif, 3000);
-            clearTimetout(hideFailureNotif);
-        }
         let failure = <?php getvar("failure", true); ?>;
         if (failure != null) {
             showFailureNotif(failure);
