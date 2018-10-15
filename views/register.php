@@ -2,13 +2,13 @@
 <html>
     <head>
         <title>Register</title>
-        <link rel="stylesheet" type="text/css" href="statics/css/form.css">
+        <link rel="stylesheet" type="text/css" href="statics/css/form.css?version=3">
     </head>
     <body>
         <div id="box-wrapper">
             <div id="box-container">
                 <div style="text-align: center;">
-                    <h1>Register</h1>
+                    <h1>REGISTER</h1>
                 </div>
                 <form method="POST">
                     <div class="input-group">
@@ -56,7 +56,7 @@
                             <label for="address">Address</label>
                         </div>
                         <div class="input-value">
-                            <textarea id="address" name="address" required></textarea>
+                            <textarea id="address" name="address" rows="4" required></textarea>
                         </div>
                     </div>
                     <div class="input-group">
@@ -73,7 +73,7 @@
                         <a href="login.php">Already have an account?</a>
                     </div>
                     <div class="box-center">
-                        <button name="submit">Register</button>
+                        <button id="submit" name="submit">Register</button>
                     </div>
                 </form>
             </div>

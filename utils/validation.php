@@ -5,8 +5,6 @@
 
     if (isset($_COOKIE['access_token'])) {
         $SESSION = Session::verify($_COOKIE['access_token']);
-    } else {
-        echo "no access token found";
     }
 
     function force_login() {
