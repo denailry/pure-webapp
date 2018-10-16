@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Register</title>
-        <link rel="stylesheet" type="text/css" href="statics/css/form.css?version=3">
+        <link rel="stylesheet" type="text/css" href="statics/css/form.css">
     </head>
     <body>
         <div id="box-wrapper">
