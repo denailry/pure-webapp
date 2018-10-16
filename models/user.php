@@ -1,6 +1,10 @@
 <?php
     require_once "configs/db.php";
 
+    define("USER_COMMIT_SUCCESS", 0);
+    define("ERR_USERNAME_EXIST", 1);
+    define("ERR_EMAIL_EXIST", 2);
+
     class User {
         private $id;
         var $name;
@@ -60,9 +64,39 @@
             return $user;
         }
 
+        static function isValidUsername($username) {
+            global $conn;
+            $query = $conn->prepare("SELECT `username` FROM user WHERE `username`=?");
+            $query->bind_param('s', $username);
+            if ($query->execute() === TRUE) {
+                $result = mysqli_stmt_get_result($query);
+                return (mysqli_num_rows($result) != 0);
+            } else {
+                throw new Exception("Unable to validate username.");
+            }
+        }
+
+        static function isValidEmail($email) {
+            global $conn;
+            $query = $conn->prepare("SELECT `email` FROM user WHERE `email`=?");
+            $query->bind_param('s', $email);
+            if ($query->execute() === TRUE) {
+                $result = mysqli_stmt_get_result($query);
+                return (mysqli_num_rows($result) != 0);
+            } else {
+                throw new Exception("Unable to validate email.");
+            }
+        }
+
         function commit() {
             global $conn;
-            if (!isset($this->$id)) {
+            if (!isValidUsername($this->username)) {
+                return ERR_USERNAME_EXIST;
+            }
+            if (!isValidEmail($this->email)) {
+                return ERR_EMAIL_EXIST;
+            }
+            if (!isset($this->id)) {
                 $query = $conn->prepare("
                     INSERT INTO user (`name`, `username`, `email`, `password`, `address`, `phone`)
                     VALUES (?, ?, ?, ?, ?, ?)");
@@ -72,7 +106,7 @@
                 if ($query->execute() === TRUE) {
                     $this->id = mysqli_insert_id($conn);
                 } else {
-                    throw new Exception("Unable to new user's data.");
+                    throw new Exception("Unable to create new user's data.");
                 }
             } else {
                 $query = $conn->prepare("
@@ -84,6 +118,7 @@
                     throw new Exception("Unable to update user's data.");
                 }
             }
+            return USER_COMMIT_SUCCESS;
         }
     }
 ?>

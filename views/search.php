@@ -11,7 +11,7 @@
                     <span style="color: #f1d801;">Pro</span>-Book
                 </div>
                 <div class="top-bar-item top-bar-info">
-                    <img style="height: 100%;" src="statics/img/logout.jpg">
+                    <img style="height: 100%;" src="statics/img/logout.jpg" onclick="window.location.href='logout.php';">
                 </div class="top-bar-item top-bar-info">
                 <div id="menu-hi" class="top-bar-item top-bar-info">
                     Hi, tayotayo
