@@ -32,4 +32,8 @@
 		global $EXPORT;
 		$EXPORT[$var] = $value;
 	}
+
+	function embed($filename) {
+		echo file_get_contents("views/addons/".$filename.".php");
+	}
 ?>
