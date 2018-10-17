@@ -70,7 +70,7 @@
             $query->bind_param('s', $username);
             if ($query->execute() === TRUE) {
                 $result = mysqli_stmt_get_result($query);
-                return (mysqli_num_rows($result) != 0);
+                return (mysqli_num_rows($result) == 0);
             } else {
                 throw new Exception("Unable to validate username.");
             }
@@ -82,7 +82,7 @@
             $query->bind_param('s', $email);
             if ($query->execute() === TRUE) {
                 $result = mysqli_stmt_get_result($query);
-                return (mysqli_num_rows($result) != 0);
+                return (mysqli_num_rows($result) == 0);
             } else {
                 throw new Exception("Unable to validate email.");
             }
