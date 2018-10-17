@@ -13,7 +13,10 @@
             <span style="color: #f1d801;">Pro</span>-Book
         </div>
         <div class="top-bar-item top-bar-info">
-            <img style="height: 100%;" src="statics/img/logout.jpg" onclick="window.location.href='logout.php';">
+            <img id="logout" style="height: 100%; cursor: pointer;" src="statics/img/logout.jpg" 
+                onmouseover="hover(true)"
+                onmouseout="hover(false)"
+                onclick="window.location.href='logout.php';">
         </div class="top-bar-item top-bar-info">
         <div id="menu-hi" class="top-bar-item top-bar-info">
             Hi, <?php getvar('username') ?>
@@ -37,3 +40,12 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function hover(status) {
+        if (status) {
+            document.getElementById("logout").src = "statics/img/logout-hover.png";
+        } else {
+            document.getElementById("logout").src = "statics/img/logout.jpg";
+        }
+    }
+</script>
