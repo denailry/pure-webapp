@@ -90,10 +90,10 @@
 
         function commit() {
             global $conn;
-            if (!isValidUsername($this->username)) {
+            if (!User::isValidUsername($this->username)) {
                 return ERR_USERNAME_EXIST;
             }
-            if (!isValidEmail($this->email)) {
+            if (!User::isValidEmail($this->email)) {
                 return ERR_EMAIL_EXIST;
             }
             if (!isset($this->id)) {

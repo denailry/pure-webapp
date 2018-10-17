@@ -70,6 +70,7 @@
         $RETURN_HTML = false;
     }
 
-
-    include "views/register.php";
+    if ($RETURN_HTML) {
+        include "views/register.php";
+    }
 ?>

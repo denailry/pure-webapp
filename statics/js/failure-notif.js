@@ -6,5 +6,5 @@ let showFailureNotif = function(message) {
     document.getElementById("failure-notif").innerHTML = message;
     document.getElementById("failure-notif").style.display = "block";
     setTimeout(hideFailureNotif, 3000);
-    clearTimetout(hideFailureNotif);
+    clearTimeout(hideFailureNotif);
 }
