@@ -1,9 +1,18 @@
 <?php
-    $EXPORT = array();
+	/*
+	 * page_var.php
+	 * is intended to store any functions and variables
+	 * related with connecting controller and views
+	 * 
+	 */	
 
 	/*
-	 * Use this to get value of PHP variable 
-	 * from html or js code 
+	 * store any variables which set by setvar
+	 */
+	$EXPORT = array();
+	
+	/*
+	 * retrieve variable which set by setvar()
 	 */
 	function getvar($var, $wrap=false) {
 		global $EXPORT;
@@ -25,15 +34,18 @@
 	}
 
 	/*
-	 * Use this to set value of PHP variable 
-	 * to be used in html or js code 
+	 * set any variables needed to get by getvar
 	 */
 	function setvar($var, $value) {
 		global $EXPORT;
 		$EXPORT[$var] = $value;
 	}
 
+	/*
+	 * embed content of file with given name in parameter,
+	 * embedded file should be located in /views/addons
+	 */
 	function embed($filename) {
-		echo file_get_contents("views/addons/".$filename.".php");
+		include "views/addons/".$filename.".php";
 	}
 ?>

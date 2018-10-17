@@ -15,21 +15,23 @@
         var $phone;
 
         function __construct($id=null) {
+            global $conn;
             if ($id != null) {
                 $query = $conn->prepare("SELECT name, username, email, address, phone FROM user WHERE id=?");
                 $query->bind_param('i', $id);
-                $result = $query->execute();
+                $query->execute();
 
+                $result = mysqli_stmt_get_result($query);
                 if (mysqli_num_rows($result) == 0) {
                     throw new Exception("User with specified id cannot be found.");
                 } else {
-                    $obj = mysqli_fetch_row($result)[0];
+                    $obj = mysqli_fetch_row($result);
                     $this->id = $id;
-                    $this->name = $obj['name'];
-                    $this->username = $obj['username'];
-                    $this->email = $obj['email'];
-                    $this->address = $obj['address'];
-                    $this->phone = $obj['phone'];
+                    $this->name = $obj[0];
+                    $this->username = $obj[1];
+                    $this->email = $obj[2];
+                    $this->address = $obj[3];
+                    $this->phone = $obj[4];
                 }
             }
         }

@@ -20,7 +20,7 @@
     }
 
     if (isset($_POST["submit"])) {
-        if (are_set($_POST, array('username', 'password'))) {
+        if (areSet($_POST, array('username', 'password'))) {
             $userId = User::verify($_POST['username'], $_POST['password']);
             if ($userId != -1) {
                 if (setup_session($userId)) {

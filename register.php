@@ -7,7 +7,7 @@
     $RETURN_HTML = true;
 
     if (isset($_POST["submit"])) {
-        if (are_set($_POST, array('name', 'username', 'email', 'password-1', 'address', 'phone'))) {
+        if (areSet($_POST, array('name', 'username', 'email', 'password-1', 'address', 'phone'))) {
             if ($_POST['password-1'] == $_POST['password-2']) {
                 $_POST['password'] = $_POST['password-1'];
                 $user = User::new($_POST);

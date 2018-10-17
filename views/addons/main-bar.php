@@ -1,3 +1,12 @@
+<?php
+    global $SESSION;
+    if ($SESSION == null) {
+        setvar('username', 'guest');
+    } else {
+        $user = $SESSION->get_user();
+        setvar('username', $user->username);
+    }
+?>
 <div id="bar">
     <div id="top-bar">
         <div id="main-title" class="top-bar-item">
@@ -7,7 +16,7 @@
             <img style="height: 100%;" src="statics/img/logout.jpg" onclick="window.location.href='logout.php';">
         </div class="top-bar-item top-bar-info">
         <div id="menu-hi" class="top-bar-item top-bar-info">
-            Hi, tayotayo
+            Hi, <?php getvar('username') ?>
         </div>
     </div>
     <div id="menu-bar">

@@ -1,5 +1,6 @@
 <?php
     require_once "configs/db.php";
+    require_once "models/user.php";
 
     define("SESSION_CLEAN_SCHEDULE", 86400);
 
@@ -38,6 +39,10 @@
 
         function get_id() {
             return $this->userId;
+        }
+
+        function get_user() {
+            return new User($this->userId);
         }
 
         static function verify($accessToken) {
