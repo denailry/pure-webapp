@@ -34,10 +34,10 @@
             }
         }
 
-        static function verify($email, $password) {
+        static function verify($username, $password) {
             global $conn;
-            $query = $conn->prepare("SELECT `id`, `email`, `password` FROM user WHERE email=?");
-            $query->bind_param('s', $email);
+            $query = $conn->prepare("SELECT `id`, `username`, `password` FROM user WHERE username=?");
+            $query->bind_param('s', $username);
             $query->execute();
 
             $result = mysqli_stmt_get_result($query);
