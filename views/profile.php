@@ -6,27 +6,32 @@
     </head>
     <body>
         <div id="main">
-            <h1>My Profile</h1>
-            <div id="username-bar">
-                <div>
-                    <p>Username  <?php getvar('username'); ?></p>
-                </div>
+            <div id="profile">
+                <img id="edit-profile" style="height: 17%; cursor: pointer;" src="statics/img/edit-profile.png"
+                    onclick="window.location.href='edit-profile.php';">
             </div>
-            <div id="email-bar">
-                <div>
-                    <p>Email  <?php getvar('email'); ?></p>
-                </div>
+            <div id="profile-name">
+                <span class="name"><?php getvar('name'); ?></span>
             </div>
-            <div id="address-bar">
-                <div>
-                    <p>Address  <?php getvar('address'); ?></p>
-                </div>
-            </div>
-            <div id="phone-bar">
-                <div>
-                    <p>Phone  <?php getvar('phone'); ?></p>
-                </div>
-            </div>
+            <h2>My Profile</h2>
+            <table style="width: 70%">
+                <tr>
+                    <td>Username</td>
+                    <td>@<?php getvar('username'); ?></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><?php getvar('email'); ?></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><?php getvar('address'); ?></td>
+                </tr>
+                <tr>
+                    <td>Phone Number</td>
+                    <td><?php getvar('phone'); ?></td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>
