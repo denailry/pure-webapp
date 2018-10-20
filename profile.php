@@ -17,6 +17,7 @@
         force_login();
     } else {
         $user = $SESSION->get_user();
+        setvar('name',$user->name);
         setvar('username',$user->username);
         setvar('email',$user->email);
         setvar('address',$user->address);
