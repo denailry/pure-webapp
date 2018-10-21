@@ -30,3 +30,15 @@ CREATE TABLE session_stamp (
 );
 INSERT INTO session_stamp VALUES(0);
 UPDATE version SET `number`=2;
+
+-- Version 3
+CREATE TABLE book (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    cover VARCHAR(255) NOT NULL,
+    rating VARCHAR(255) NOT NULL,
+    review BLOB NOT NULL,
+    PRIMARY KEY (id)
+);
+UPDATE version SET `number`=3;
