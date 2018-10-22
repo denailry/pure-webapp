@@ -23,7 +23,8 @@
         </div>
     </div>
     <div id="menu-bar">
-        <div id="menu-browse" data-menu-selected style="border-right: 2px solid #000000;">
+    <!-- data-menu-selected -->
+        <div id="menu-browse" style="border-right: 2px solid #000000;">
             <div>
                 <p>Browse</p>
             </div>

@@ -42,3 +42,8 @@ CREATE TABLE book (
     PRIMARY KEY (id)
 );
 UPDATE version SET `number`=3;
+
+-- Version 4
+ALTER TABLE user
+ADD profilepic VARCHAR(255);
+UPDATE version SET `number`= 4;

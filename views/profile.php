@@ -8,7 +8,7 @@
         <div id="main">
             <div id="profile">
                 <img id="edit-profile" style="height: 100%; cursor: pointer;" src="statics/img/edit-profile.png"
-                    onclick="window.location.href='edit_profile.php';">
+                    onclick="window.location.href='editprofile.php';">
             </div>
             <div style="background-color: #00374c">
                 <img id="profile-picture" src="statics/img/default-profile-picture.png">
