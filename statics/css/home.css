@@ -1,3 +1,7 @@
+body{
+    margin: 0px;
+}
+
 #bar {
     display: inline-block;
     width: 100%;
@@ -84,6 +88,13 @@
     margin-bottom: 10px;
 }
 
+#main h3 {
+    color: #f26600;
+    font-size: 4em;
+    margin: 33px;
+    margin-bottom: 0;
+}
+
 #box-search {
     width: 40%;
     margin: 0px auto;
@@ -139,7 +150,16 @@
     height: 10%;
 }
 
+#edit-profile {
+    height: 100%;
+    cursor: pointer;
+}
+
 #profile-picture {
+    background-color: #00374c;
+}
+
+#profile-picture > img {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -170,9 +190,141 @@ span.name {
     vertical-align: 100px;       
 }
 
-table, td {
+table.profile {
+    margin-left: 50px;
+    width: 70%;
+    height: 20px;
+    padding: 5px;
+    font-size: 1.2em;   
+}
+
+table.profile td.icon {
+    width: 5%;
+    height: 20px;
+}
+
+table.profile td.icon > img {
+    height: 100%;
+}
+
+table.profile td.title {
     width: 20%;
     height: 20px;
     padding: 5px;
+}
+
+#cover {
+    width: 150px;
+    height: 150px;
+    border-style: solid;
+}
+
+figure {
+    float: right;
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 150px;
+}
+
+figure.caption {
+    display: block;
+}
+
+figcaption.caption {
+    font-weight: bold;
+}
+
+div.order {
+    margin-left: 33px;
+    margin-top: 33px;
+}
+
+div.review {
+    margin-left: 33px;
+    margin-top: 33px;
+}
+
+span.subheading {
+    display: block;
+    color: #00374c;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+span.author {
     font-size: 1.2em; 
+    font-weight: bold; 
+    margin: 33px; 
+    margin-top: 0;
+}
+
+span.detail {
+    display: inline-block;
+    width: 70%;
+    font-size: 1.3em;
+    margin: 22px;
+    margin-left: 33px
+}
+
+span.jumlah {
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+
+#btn-order {
+    display: block;
+    float: right;
+    margin: 40px;
+    border-style: solid;
+}
+
+table.reviews {
+    table-layout:fixed;
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+td.profile_picture {
+    width: 85px;
+    height: 85px;
+}
+
+td.profile_picture > img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+}
+
+td.comments {
+    display: inline-block;
+    width: 65%;
+    margin-top: 0;
+}
+
+td.comments > span.username {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4d4d4d;
+    margin-left: 2%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+td.comments > span.comment {
+    display: block;
+    margin-left: 2%;
+    margin-top: 0;
+}
+
+td.ratings {
+    width: 7%;
+}
+
+td.ratings > p {
+    font-weight: bold;
 }
