@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="statics/css/home.css">
     </head>
     <body>
-        <?php embed("main-bar"); ?>
+        <?php setvar('page', 'browse'); embed("main-bar"); ?>
         <div id="main">
             <div id="box-search">
                 <h1>Search Book</h1>

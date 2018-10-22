@@ -45,6 +45,11 @@ body{
     background: #f26600; 
 }
 
+#menu-bar > div:hover {
+    background: #f26600;
+    cursor: pointer;
+}
+
 #menu-bar > div > div {
     width:100%; 
     text-align: center;

@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <?php embed("main-bar"); ?>
+    <?php embed("main-bar"); setvar('page', 'profile'); ?>
 
     <div id="main">
         <h2>Edit Profile<h2>
@@ -75,9 +75,4 @@
     </form>
 
 </body>
-
-<script type="text/javascript">
-    document.getElementById("menu-profile").setAttribute("data-menu-selected", "");
-</script>
-
 </html>

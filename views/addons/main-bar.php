@@ -23,18 +23,17 @@
         </div>
     </div>
     <div id="menu-bar">
-    <!-- data-menu-selected -->
-        <div id="menu-browse" style="border-right: 2px solid #000000;">
+        <div id="menu-browse" style="border-right: 2px solid #000000;" onclick="window.location.href = 'index.php'">
             <div>
                 <p>Browse</p>
             </div>
         </div>
-        <div id="menu-history" style="border-right: 2px solid #000000;">
+        <div id="menu-history" style="border-right: 2px solid #000000;" onclick="window.location.href = 'history.php'">
             <div>
                 <p>History</p>
             </div>
         </div>
-        <div id="menu-profile">
+        <div id="menu-profile" onclick="window.location.href = 'profile.php'">
             <div>
                 <p>Profile</p>
             </div>
@@ -48,5 +47,10 @@
         } else {
             document.getElementById("logout").src = "statics/img/logout.jpg";
         }
+    }
+
+    let page = <?php getvar('page', true) ?>;
+    if (page == 'browse' || page == 'history' || page == 'profile') {
+        document.getElementById('menu-' + page).setAttribute("data-menu-selected", "");
     }
 </script>
