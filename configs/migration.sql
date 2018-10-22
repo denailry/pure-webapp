@@ -38,6 +38,7 @@ CREATE TABLE book (
     author VARCHAR(255) NOT NULL,
     cover VARCHAR(255) NOT NULL,
     rating VARCHAR(255) NOT NULL,
+    detail VARCHAR(255) NOT NULL,
     review BLOB NOT NULL,
     PRIMARY KEY (id)
 );
