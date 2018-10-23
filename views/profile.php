@@ -7,11 +7,7 @@
     <body>
         <div id="main">
             <div id="profile">
-<<<<<<< HEAD
-                <img id="edit-profile" style="height: 100%; cursor: pointer;" src="statics/img/edit-profile.png"
-=======
                 <img id="edit-profile" src="statics/img/edit-profile.png"
->>>>>>> 3b36c828d9c91650676c90cef199fb62f138c50a
                     onclick="window.location.href='editprofile.php';">
             </div>
             <div id="profile-picture">
