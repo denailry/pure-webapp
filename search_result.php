@@ -22,7 +22,7 @@
             $querytitle->execute();
 
             $bookresult = mysqli_stmt_get_result($querytitle);
-            setvar('numberofresults',mysqli_num_rows($bookresult));
+            $numberofresults = mysqli_num_rows($bookresult);
 
             if (mysqli_num_rows($bookresult) != 0) {
                 $j = 0;
