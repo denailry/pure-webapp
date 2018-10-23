@@ -48,3 +48,18 @@ UPDATE version SET `number`=3;
 ALTER TABLE user
 ADD profilepic VARCHAR(255);
 UPDATE version SET `number`= 4;
+
+-- Version 5
+CREATE TABLE orderbook(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    orderdate DATETIME NOT NULL,
+    userid INT UNSIGNED NOT NULL,
+    bookid INT UNSIGNED NOT NULL,
+    total INT NOT NULL,
+    review VARCHAR(1024),
+    FOREIGN KEY(userid) REFERENCES user(id),
+    FOREIGN KEY(bookid) REFERENCES book(id),
+    PRIMARY KEY(id)
+);
+
+UPDATE version SET `number`= 5;
