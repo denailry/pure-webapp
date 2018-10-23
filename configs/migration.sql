@@ -56,10 +56,14 @@ CREATE TABLE orderbook(
     userid INT UNSIGNED NOT NULL,
     bookid INT UNSIGNED NOT NULL,
     total INT NOT NULL,
-    review VARCHAR(1024),
+    rating float(2,1),
+    reviewcomment VARCHAR(1024),
     FOREIGN KEY(userid) REFERENCES user(id),
     FOREIGN KEY(bookid) REFERENCES book(id),
     PRIMARY KEY(id)
 );
+
+ALTER TABLE book
+DROP COLUMN rating;
 
 UPDATE version SET `number`= 5;
