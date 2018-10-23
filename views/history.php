@@ -14,5 +14,7 @@
     </div>
 
     
-
+    <script type="text/javascript">
+    document.getElementById("menu-history").setAttribute("data-menu-selected", "");
+</script>
 </body>

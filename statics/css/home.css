@@ -284,7 +284,7 @@ button{
 
 .input-fields {
     text-align: left; 
-    margin-right: 100px;
+    margin-right: 30px;
 }
 
 .input-value {
@@ -297,8 +297,6 @@ button{
     display: flex;
     margin-bottom: 14px;
     font-size: 1.25em;
-    width: 200px; 
-    border:5px solid black;
 }
 
 .right-button{

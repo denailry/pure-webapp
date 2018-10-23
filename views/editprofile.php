@@ -17,61 +17,74 @@
         FROM user
         WHERE id=this.id;
 -->
-
-
     <form method="POST" autocomplete="off">
-        <div class="flex-container" id="change-profpic">
-            <div>
-                <img src="/mocks/edit_profile.png" alt="foto profil" height="50" width="50">
-            </div>
-            <div>
-
-                <div class="input-group">
+        <table style="width:100%">
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>
+                    <div id="profile-picture">
+                        <img src="/mocks/edit_profile.png" alt="foto profil" height="50" width="50">
+                    </div>
+                </td>
+                <td>
                     <div class="input-fields">
                         <label>Update profile picture</label>
                     </div>
-                    <div class="flex-container">
-                        <input id="fileinput" type="text" name="fname">
-                        <div class="input-value">
-                            <input type="file" id="newProfilePicture" size="50">
+                    <br>
+                    <input id="fileinput" type="text" name="fname">
+                    <div class="input-value">
+                        <input type="file" id="user-profile-picture" size="50">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="input-fields">
+                        <label for="name">Name</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="input-value" id="name-input">
+                        <div>
+                            <input id="user-name" type="text" value="<?php getvar('name'); ?>">
                         </div>
                     </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="input-group flex-container" id="name-input">
-            <div class="input-fields">
-                <label for="name">Name</label>
-            </div>
-            <div class="input-value">
-                <input id="name" type="text">
-            </div>
-        </div>
-
-        <div class="flex-container" id="address-input">
-            <div class="input-group flex-container" id="name-input">
+                </td>
+            </tr>
+            <td>
                 <div class="input-fields">
                     <label for="address">Address</label>
                 </div>
+            </td>
+            <td>
                 <div class="input-value">
-                    <input id="address" type="text">
+                    <input id="user-address" type="text" value="<?php getvar('address'); ?>">
+                    <br>
+                    <br>
+                    <br>
                 </div>
-            </div>
-        </div>
+            </td>
+            <tr>
+                <td>
+                    <div class="input-fields">
+                        <label for="phone-number">Phone Number</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="input-value">
+                        <input id="user-phone-number" type="text" value="<?php getvar('phone'); ?>">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
 
-        <div class="input-group flex-container" id="name-input">
-            <div class="input-fields">
-                <label for="phone-number">Phone Number</label>
-            </div>
-            <div class="input-value">
-                <input type="text">
-            </div>
-        </div>
 
-        <button type="submit" id="back-button">Back</button>
-        <button class="right-button" type="submit" id="save-button">Save</button>
+    <button type="submit" id="back-button">Back</button>
+    <button class="right-button" type="submit" id="save-button">Save</button>
     </form>
 
 </body>
