@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="statics/css/home.css">
     </head>
     <body>
+        <?php embed("main-bar"); ?>
         <div id="main">
             <figure>
                 <img id="cover" src=<?php getvar('cover'); ?>>
@@ -37,10 +38,10 @@
                     foreach ($reviews as $item) {
                         ?>
                         <table class="reviews">
-                            <td class="profile_picture"><img src=<?php echo $item['profile_picture']; ?>></td>
+                            <td class="profile_picture"><img src=<?php $item['profilepic']; ?>></td>
                             <td class="comments">
-                                <span class="username"><?php echo "@".$item['username']; ?></span>
-                                <span class="comment"><?php echo $item['comment']; ?></span>
+                                <span class="username">@<?php echo $item['username']; ?></span>
+                                <span class="comment"><?php echo $item['reviewcomment']; ?></span>
                             </td>
                             <td class="ratings"><p><?php echo $item['rating']; ?>/5.0</p></td>
                         </table>

@@ -13,11 +13,12 @@
         var $password;
         var $address;
         var $phone;
+        var $profilepic;
 
         function __construct($id=null) {
             global $conn;
             if ($id != null) {
-                $query = $conn->prepare("SELECT name, username, email, address, phone FROM user WHERE id=?");
+                $query = $conn->prepare("SELECT name, username, email, address, phone, profilepic FROM user WHERE id=?");
                 $query->bind_param('i', $id);
                 $query->execute();
 
@@ -32,6 +33,7 @@
                     $this->email = $obj[2];
                     $this->address = $obj[3];
                     $this->phone = $obj[4];
+                    $this->profilepic = $obj[5];
                 }
             }
         }

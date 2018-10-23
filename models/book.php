@@ -45,9 +45,9 @@
             if (!isset($this->id)) {
                 $query = $conn->prepare("
                     INSERT INTO book (`title`, `author`, `cover`, `detail`)
-                    VALUES (?, ?, ?, ?, ?, ?)");
+                    VALUES (?, ?, ?, ?)");
                 $query->bind_param('ssssss', 
-                    $this->title, $this->author, $this->cover, $this->detail;
+                    $this->title, $this->author, $this->cover, $this->detail);
                 if ($query->execute() === TRUE) {
                     $this->id = mysqli_insert_id($conn);
                 } else {
