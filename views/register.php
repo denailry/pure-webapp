@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Register</title>
-        <link rel="stylesheet" type="text/css" href="statics/css/form.css?version=1">
+        <link rel="stylesheet" type="text/css" href="statics/css/form.css?version=6">
     </head>
     <body>
         <div id="box-wrapper">
@@ -76,7 +76,7 @@
                             <label for="phone">Phone</label>
                         </div>
                         <div class="input-value">
-                            <input id="phone" type="tel" name="phone" required>
+                            <input id="phone" type="text" name="phone" required>
                         </div>
                     </div>
                     <div id="failure-notif" class="box-center">
@@ -116,10 +116,128 @@
             } else if (!inputStatus.email) {
                 showFailureNotif("email is exist");
             } else {
-                if (document.getElementById("input-form").reportValidity()) {
+                if (isInputFormValid()) {
                     document.getElementById("submitter").click();
                 }
             }
+        }
+
+        function isInputFormValid() {
+            let inputList = [
+                'name',
+                'username',
+                'email',
+                'password-1',
+                'password-2',
+                'address',
+                'phone'
+            ];
+            let i = 0;
+            while (i < inputList.length) {
+                elementId = inputList[i];
+                if (document.getElementById(elementId).value.trim().length == 0) {
+                    return showInvalidInput(elementId, 'value of ' + elementId + ' cannot be empty');;
+                }
+                i++;
+            }
+            if (!isValidEmail(document.getElementById('email').value)) {
+                return showInvalidInput('email', 'value of email is invalid');
+            }
+            if (!isValidUsername(document.getElementById('username').value)) {
+                return showInvalidInput('username', 'value of username is invalid');
+            }
+            if (!isValidPhone(document.getElementById('phone').value)) {
+                return showInvalidInput('phone', 'value of phone is invalid');
+            }
+            if (!isValidName(document.getElementById('name').value)) {
+                return showInvalidInput('name', 'value of name is invalid');
+            }
+            return true;
+        }
+
+
+        function showInvalidInput(elementId, message) {
+            showFailureNotif(message);
+            return false;
+        }
+
+        function isValidEmail(email) {
+            let temp = email.split('@');
+            if (temp.length < 2) {
+                return false;
+            }
+            let mailname = temp[0];
+            let domain = temp[1].split('.');
+            if (domain.length < 2) {
+                return false;
+            }
+            let i = mailname.length;
+            while (i--) {
+                letter = mailname[i];
+                if (!isAlphabet(letter) && !isNumber(letter) && letter != '.') {
+                    return false;
+                }
+            }
+            let j = domain.length;
+            while (j--) {
+                word = domain[j];
+                if (word.length == 0) {
+                    return false;
+                }
+                i = word.length;
+                while (i--) {
+                    letter = word[i];
+                    if (!isAlphabet(letter) && !isNumber(letter)) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        function isValidPhone(phone) {
+            if (phone.length < 9 || phone.length > 12) {
+                return false;
+            }
+            let i = phone.length;
+            while (i--) {
+                letter = phone[i];
+                if (!isNumber(letter)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function isValidName(name) {
+            let i = name.length;
+            while (i--) {
+                letter = name[i];
+                if (!isAlphabet(letter) && letter != ' ') {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function isValidUsername(username) {
+            let i = username.length;
+            while (i--) {
+                letter = username[i];
+                if (!isAlphabet(letter) && !isNumber(letter)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function isAlphabet(letter) {
+            return (letter >= 'a' && letter <= 'z') || 
+                (letter >= 'A' && letter <= 'Z');
+        }
+
+        function isNumber (letter) {
+            return (letter >= '0' && letter <= '9');
         }
     </script>
     <script src="statics/js/ajax.js"></script>
@@ -149,6 +267,19 @@
             email: null
         }
         function validateValue(elementId) {
+            if (elementId == 'email') {
+                if (!isValidEmail(document.getElementById('email').value)) {
+                    changeValidationImage(elementId, VALIDATION_FALSE);
+                    inputStatus[elementId] = false;
+                    return;
+                }
+            } else if (elementId == 'username') {
+                if (!isValidUsername(document.getElementById('username').value)) {
+                    changeValidationImage(elementId, VALIDATION_FALSE);
+                    inputStatus[elementId] = false;
+                    return;
+                }
+            }
             let value = document.getElementById(elementId).value;
             if (value.length == 0) {
                 changeValidationImage(elementId, VALIDATION_NULL);

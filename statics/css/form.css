@@ -147,8 +147,7 @@
 }
 
 .input-value .validation {
-    height: 100%; 
-    margin-left: 3px; 
+    height: 100%;  
     display: flex; 
     align-items: center;
 }
@@ -158,6 +157,7 @@
     transition: width 0.5s;
     width: 20px;
     height: 20px;
+    margin-left: 3px;
 }
 
 .input-value .validation .validation-hide {
