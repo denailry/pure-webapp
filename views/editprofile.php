@@ -34,9 +34,9 @@
                         <label>Update profile picture</label>
                     </div>
                     <br>
-                    <input id="fileinput" type="text" name="fname">
+                    <textarea id="fileinput" type="text" name="fname">
                     <div class="input-value">
-                        <input type="file" id="user-profile-picture" size="50">
+                        <input name="profilepic" type="file" id="user-profile-picture" size="50">
                     </div>
                 </td>
             </tr>
@@ -49,7 +49,7 @@
                 <td>
                     <div class="input-value" id="name-input">
                         <div>
-                            <input id="user-name" type="text" value="<?php getvar('name'); ?>">
+                            <textarea name = "name" id="user-name" type="text" value="<?php getvar('name'); ?>">
                         </div>
                     </div>
                 </td>
@@ -61,7 +61,7 @@
             </td>
             <td>
                 <div class="input-value">
-                    <input id="user-address" type="text" value="<?php getvar('address'); ?>">
+                    <textarea name="address" id="user-address" type="text" value="<?php getvar('address'); ?>">
                     <br>
                     <br>
                     <br>
@@ -75,7 +75,7 @@
                 </td>
                 <td>
                     <div class="input-value">
-                        <input id="user-phone-number" type="text" value="<?php getvar('phone'); ?>">
+                        <textarea name="phone-number" id="user-phone-number" type="text" value="<?php getvar('phone'); ?>">
                     </div>
                 </td>
             </tr>

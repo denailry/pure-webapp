@@ -67,3 +67,9 @@ ALTER TABLE book
 DROP COLUMN rating;
 
 UPDATE version SET `number`= 5;
+
+-- Version 6
+ALTER TABLE book
+DROP COLUMN review;
+
+UPDATE version SET `number`= 6;

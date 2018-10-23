@@ -84,6 +84,7 @@
                     <div id="box-link">
                         <a href="login.php">Already have an account?</a>
                     </div>
+                    <button id="submitter" type="submit" name="submit" style="display: none;"></button>
                     <div class="box-center">
                         <button id="submit" type="button" name="submit" onclick="failureCheck()">Register</button>
                     </div>
@@ -116,7 +117,7 @@
                 showFailureNotif("email is exist");
             } else {
                 if (document.getElementById("input-form").reportValidity()) {
-                    document.getElementById("input-form").submit();
+                    document.getElementById("submitter").click();
                 }
             }
         }

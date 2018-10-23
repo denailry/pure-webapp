@@ -8,14 +8,12 @@
 		var $title;
 		var $author;
 		var $cover;
-		var $rating;
         var $detail;
-		var $review;
 
 		function __construct($id=null) {
             global $conn;
             if ($id != null) {
-                $query = $conn->prepare("SELECT title, author, cover, rating, detail, review FROM book WHERE id=?");
+                $query = $conn->prepare("SELECT title, author, cover, detail FROM book WHERE id=?");
                 $query->bind_param('i', $id);
                 $query->execute();
 
@@ -28,21 +26,17 @@
                     $this->title = $obj[0];
                     $this->author = $obj[1];
                     $this->cover = $obj[2];
-                    $this->rating = $obj[3];
-                    $this->detail = $obj[4];
-                    $this->review = unserialize($obj[5]);
+                    $this->detail = $obj[3];
                 }
             }
         }
 
-        static function new($title,$author,$cover,$rating,$detail,$review) {
+        static function new($title,$author,$cover,$detail) {
             $book = new Book();
             $book->title = $title;
             $book->author = $author;
             $book->cover = $cover;
-            $book->rating = $rating;
             $book->detail = $detail;
-            $book->review = $review;
             return $book;
         }
 
@@ -50,12 +44,10 @@
             global $conn;
             if (!isset($this->id)) {
                 $query = $conn->prepare("
-                    INSERT INTO book (`title`, `author`, `cover`, `rating`, `detail`, `review`)
+                    INSERT INTO book (`title`, `author`, `cover`, `detail`)
                     VALUES (?, ?, ?, ?, ?, ?)");
-                $serialized_review = serialize($this->review);
                 $query->bind_param('ssssss', 
-                    $this->title, $this->author, $this->cover, 
-                    $this->rating, $this->detail, $serialized_review);
+                    $this->title, $this->author, $this->cover, $this->detail;
                 if ($query->execute() === TRUE) {
                     $this->id = mysqli_insert_id($conn);
                 } else {
@@ -63,10 +55,10 @@
                 }
             } else {
                 $query = $conn->prepare("
-                    UPDATE book SET `title`=?, `author`=?, `cover`=?, `rating`=?, `detail`=?, `review`=?)
+                    UPDATE book SET `title`=?, `author`=?, `cover`=?, `detail`=?)
                     WHERE `id`=?");
                 $query->bind_param('ssssi', 
-                    $this->title, $this->author, $this->cover, $this->rating, $this->detail, $this->review, $this->id);
+                    $this->title, $this->author, $this->cover, $this->detail, $this->id);
                 if ($query->execute() === FALSE) {
                     throw new Exception("Unable to update book's data.");
                 }
