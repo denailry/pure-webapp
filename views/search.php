@@ -9,10 +9,10 @@
         <div id="main">
             <div id="box-search">
                 <h1>Search Book</h1>
-                <div>
-                    <input id="input-search" type="text" placeholder="Input search terms...">
-                </div>
-                <button id="btn-search" class="btn-primary">Search</button>
+                <form action="/tugasbesar1_2018/search_result.php" method="GET" autocomplete="off">
+                    <input id="input-search" type="text" name="input-search" placeholder="Input search terms...">
+                    <button id="btn-search" class="btn-primary" type="submit">Search</button>
+                </form>
             </div>
         </div>
     </body>
