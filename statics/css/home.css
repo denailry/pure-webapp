@@ -396,3 +396,66 @@ td.ratings > p {
 #inputfileprofpic{
     display: none;
 }
+
+span.searchresult {
+    display: inline-block;
+    margin: 33px;
+    font-size: 4em;
+    font-weight: bold;
+    color: #f26600;
+}
+
+span.numberofresult {
+    display: inline-block;
+    font-size: 1.5em;
+    color: #4c4c4c;
+}
+
+table.results {
+    table-layout:fixed;
+    width: 100%;
+    margin-bottom: 3%;
+    margin-left: 33px;
+}
+
+td.cover {
+    width: 150px;
+    height: 150px;
+}
+
+td.cover > img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+}
+
+table.results td.about {
+    display: inline-block;
+    width: 94%;
+    margin-top: 0;
+}
+
+td.about > p.title {
+    display: inline-block;
+    margin: 0px 30px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #f26600;
+}
+
+td.about > p.author {
+    margin: 0px 30px;
+    font-weight: bold;
+    color: #4c4c4c;
+}
+
+td.about > p.detail {
+    margin: 0px 30px;
+    color: #4c4c4c;
+}
+
+#btn-detail {
+    float: right;
+    margin-right: 40px;
+}
