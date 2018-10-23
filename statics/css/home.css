@@ -302,7 +302,7 @@ button{
 .right-button{
     float:right;
     font-weight: bold; 
-    margin: 33px; 
+    margin-left: 220px; 
     margin-top: 0;
 }
 
@@ -373,4 +373,26 @@ td.ratings {
 
 td.ratings > p {
     font-weight: bold;
+}
+
+#profile-picture{
+    width:100px;
+    height:100px;
+    border:1px;
+}
+
+#update-profile-picture{
+    margin-left: 10px;
+}
+
+.inputbox{
+    width:25%;
+}
+
+.inputfile{
+    display: inline-block;
+}
+
+#inputfileprofpic{
+    display: none;
 }

@@ -12,12 +12,8 @@
     <div id="main">
         <h2>Edit Profile<h2>
     </div>
-    <!-- Mustinya cari dari DB : 
-        SELECT profilepic
-        FROM user
-        WHERE id=this.id;
--->
-    <form method="POST" autocomplete="off">
+
+    <form method="POST" id="input-form" autocomplete="off">
         <table style="width:100%">
             <tr>
                 <th></th>
@@ -26,18 +22,19 @@
             <tr>
                 <td>
                     <div id="profile-picture">
-                        <img src="/mocks/edit_profile.png" alt="foto profil" height="50" width="50">
+                        <img src="/mocks/edit_profile.png" alt="foto profil">
                     </div>
                 </td>
                 <td>
-                    <div class="input-fields">
+                    <div class="input-fields" id="update-profile-picture">
                         <label>Update profile picture</label>
                     </div>
                     <br>
-                    <textarea id="fileinput" type="text" name="fname">
-                    <div class="input-value">
+                    <input class="input-value inputbox inputfile" name='fileinput' id="fileinput" type="text" name="fname">
+                    <div class="input-value inputfile" id="inputfileprofpic">
                         <input name="profilepic" type="file" id="user-profile-picture" size="50">
                     </div>
+                    <button onclick=inputfile() type="button" class = "filebutton" id="buttonprofpic">Browse ...</button>
                 </td>
             </tr>
             <tr>
@@ -49,7 +46,7 @@
                 <td>
                     <div class="input-value" id="name-input">
                         <div>
-                            <textarea name = "name" id="user-name" type="text" value="<?php getvar('name'); ?>">
+                            <input name = "name" id="user-name" type="text" value="<?php getvar('name'); ?>">
                         </div>
                     </div>
                 </td>
@@ -61,7 +58,7 @@
             </td>
             <td>
                 <div class="input-value">
-                    <textarea name="address" id="user-address" type="text" value="<?php getvar('address'); ?>">
+                    <input name="address" id="user-address" type="text" value="<?php getvar('address'); ?>">
                     <br>
                     <br>
                     <br>
@@ -75,7 +72,7 @@
                 </td>
                 <td>
                     <div class="input-value">
-                        <textarea name="phone-number" id="user-phone-number" type="text" value="<?php getvar('phone'); ?>">
+                        <input name="phone-number" id="user-phone-number" type="text" value="<?php getvar('phone'); ?>">
                     </div>
                 </td>
             </tr>
@@ -83,14 +80,24 @@
     </form>
 
 
-    <button type="submit" id="back-button">Back</button>
-    <button class="right-button" type="submit" id="save-button">Save</button>
+    <button onclick="window.location.href='profile.php'" type="submit" id="back-button">Back</button>
+    <button onclick="window.location.href='profile.php'" class="right-button" type="submit" name="submit" id="save-button">Save</button>
     </form>
 
 </body>
 
 <script type="text/javascript">
     document.getElementById("menu-profile").setAttribute("data-menu-selected", "");
+
+    var picture_url = document.getElementById("user-profile-picture");
+    picture_url.onchange = function(event){
+        fileinput.value = (picture_url.value);
+    }
+
+    function inputfile(){
+        var user_profile_picture = document.getElementById("user-profile-picture");
+        user_profile_picture.click();
+    }
 </script>
 
 </html>
