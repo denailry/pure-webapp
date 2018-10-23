@@ -255,7 +255,6 @@ span.subheading {
 
 span.author {
     font-size: 1.2em; 
-<<<<<<< HEAD
 }
 
 .flex-container{
@@ -304,7 +303,6 @@ button{
 
 .right-button{
     float:right;
-=======
     font-weight: bold; 
     margin: 33px; 
     margin-top: 0;
@@ -377,5 +375,4 @@ td.ratings {
 
 td.ratings > p {
     font-weight: bold;
->>>>>>> 3b36c828d9c91650676c90cef199fb62f138c50a
 }
