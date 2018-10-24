@@ -50,17 +50,19 @@
             echo "<td>";
             echo '<div class="bookimage" style="border:1px">';  
             if(is_null($row['cover'])){
-                echo '<img src=';
+                echo '<img class="historybook" src=';
                 echo '"statics/img/mocks/detail.png">';
             }
             else{
-                echo "<img src=".$row['cover'].">";
+                echo '<img id="historybook" src=';
+                echo $row['cover'];
+                echo '>';
             }
             echo '</div>
             </td>
             <td>
                 <div id="bookinfo">
-                    <div class="title" id="booktitle">';
+                    <div  id="booktitle">';
             echo $row['title'];
             echo '</div>
             <div id="jumlahpesanan">';
@@ -82,6 +84,7 @@
             echo $row['orderdate'];//belum format DD - bulan - YYYY
             echo "</div>";
             echo "<div id='ordernumber'>";
+            echo "Nomor Order : #";
             echo $row['ordernumber'];
             echo "</div></div>";
             if(is_null($row['reviewcomment'])){

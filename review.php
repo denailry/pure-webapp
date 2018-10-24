@@ -5,6 +5,36 @@
     require_once "models/session.php";
     require_once "utils/common.php";
     require_once "utils/page_var.php";
-    
+    if (isset($_COOKIE['access_token'])) {
+        $SESSION = Session::verify($_COOKIE['access_token']);
+    }
+
+    if ($SESSION == null) {
+        force_login();
+    } else {
+        $user = $SESSION->get_user();
+        setvar('name',$user->name);
+        setvar('username',$user->username);
+        setvar('email',$user->email);
+        setvar('address',$user->address);
+        setvar('phone',$user->phone);
+    }
+
+    if(isset($_POST["submitreview"])){
+        global $conn;
+        $orderid = 
+        $rating = $_POST['ratinginput'];
+        $reviewcomment = $_POST['inputcomment'];
+        $orderid = $_POST['orderid'];
+        $query = $conn->prepare('UPDATE orderbook
+        SET rating=?, reviewcomment=?
+        WHERE id=?');
+        
+        $query->bind_param('isi', $rating,$reviewcomment,$orderid);
+        $query->execute();
+        $result = mysqli_stmt_get_result($query);
+        header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018'.'/history.php');
+        die();  
+    }
     include 'views/review.php';
 ?>

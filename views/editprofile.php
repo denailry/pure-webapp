@@ -14,11 +14,9 @@
     </div>
 
     <form method="POST" id="input-form" autocomplete="off">
-        <table style="width:100%">
-            <tr>
-                <th></th>
-                <th></th>
-            </tr>
+        <table>
+            <col width="200">
+            <col width="400">
             <tr>
                 <td>
                     <div id="profile-picture">
@@ -73,14 +71,20 @@
                 <td>
                     <div class="input-value">
                         <input name="phone-number" id="user-phone-number" type="text" value="<?php getvar('phone'); ?>">
-                    </div>  
+                    </div>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <button onclick=changePage() type="button" id="back-button">Back</button>
+                </td>
+                <td>
+                    <button class="right-button blue-button" type="submit" name="submit" id="save-button">Save</button>
+                </td>
         </table>
 
 
-        <button onclick=changePage() type="button" id="back-button">Back</button>
-        <button  class="right-button blue-button" type="submit" name="submit" id="save-button">Save</button>
+
     </form>
 
 </body>
@@ -95,9 +99,10 @@
         user_profile_picture.click();
     }
 
-    function changePage(){
+    function changePage() {
         console.log("HTE")
-        window.location.href="profile.php";
+        window.location.href = "profile.php";
     }
 </script>
+
 </html>
