@@ -35,7 +35,6 @@
     }
 
     if (!isset($_POST["submit"]) && isset($_POST['username'])) {
-        echo isset($_POST["submit"]);
         try {
             $result = User::isValidUsername($_POST['username']);
             $response = array(
@@ -54,7 +53,6 @@
     }
 
     if (!isset($_POST["submit"]) && isset($_POST['email'])) {
-        echo isset($_POST["submit"]);
         try {
             $result = User::isValidEmail($_POST['email']);
             $response = array(

@@ -18,10 +18,9 @@
             </div>
             <div class="order">
                 <span class="subheading">Order</span>
-                <button id="btn-order" class="btn-primary">Order</button>
-                <div>
+                <form method="POST">
                     <span class="jumlah">Jumlah :</span>
-                    <select>
+                    <select name="orderamount">
                         <?php
                             for ($i=1;$i<=100;$i++) {
                                 ?>
@@ -30,23 +29,26 @@
                             }
                         ?>
                     </select>
-                </div>
+                    <button id="btn-order" class="btn-primary" type="submit">Order</button>
+                </form>
             </div>
             <div class="review">
                 <span class="subheading">Reviews</span>
-                <?php 
-                    foreach ($reviews as $item) {
-                        ?>
-                        <table class="reviews">
-                            <td class="profile_picture"><img src=<?php $item['profilepic']; ?>></td>
-                            <td class="comments">
-                                <span class="username">@<?php echo $item['username']; ?></span>
-                                <span class="comment"><?php echo $item['reviewcomment']; ?></span>
-                            </td>
-                            <td class="ratings"><p><?php echo $item['rating']; ?>/5.0</p></td>
-                        </table>
-                        <?php
-                    }
+                <?php
+                    if ($reviews[0]['profilepic'] != 'foo'){
+                        foreach ($reviews as $item) {
+                            ?>
+                            <table class="reviews">
+                                <td class="profile_picture"><img src=<?php $item['profilepic']; ?>></td>
+                                <td class="comments">
+                                    <span class="username">@<?php echo $item['username']; ?></span>
+                                    <span class="comment"><?php echo $item['reviewcomment']; ?></span>
+                                </td>
+                                <td class="ratings"><p><?php echo $item['rating']; ?>/5.0</p></td>
+                            </table>
+                            <?php
+                        }
+                    } 
                 ?>                
             </div>
         </div>
