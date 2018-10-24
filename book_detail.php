@@ -38,7 +38,7 @@
             }
 
             /*find reviews*/ 
-            $queryreview = $conn->prepare("SELECT profilepic, username, rating, reviewcomment FROM orderbook INNER JOIN user ON orderbook.userid=user.id WHERE orderbook.bookid=?");
+            $queryreview = $conn->prepare("SELECT profilepic, username, rating, reviewcomment FROM orderbook INNER JOIN user ON orderbook.userid=user.id WHERE orderbook.bookid=? AND rating IS NOT NULL");
             $queryreview->bind_param('i', $id);
             $queryreview->execute();
 
@@ -55,6 +55,18 @@
                     $j=$j+1;
                 }
             }
+
+            /*insert order*/
+            if (isset($_POST['orderamount'])) {
+                $total = $_POST['orderamount'];
+                $queryorder = $conn->prepare("
+                INSERT INTO orderbook (`orderdate`, `userid`, `bookid`, `total`)
+                VALUES (?, ?, ?, ?)");
+                $date = date('Y-m-d H:i:s');
+                $user_id = $SESSION->get_id();
+                $queryorder->bind_param('siii', $date, $user_id, $id, $total);
+                $queryorder->execute();
+            } 
         }
     }
     
