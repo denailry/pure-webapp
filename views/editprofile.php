@@ -34,7 +34,7 @@
                     <div class="input-value inputfile" id="inputfileprofpic">
                         <input name="profilepic" type="file" id="user-profile-picture" size="50">
                     </div>
-                    <button onclick=inputfile() type="button" class = "filebutton" id="buttonprofpic">Browse ...</button>
+                    <button onclick=inputfile() type="button" class="filebutton" id="buttonprofpic">Browse ...</button>
                 </td>
             </tr>
             <tr>
@@ -46,7 +46,7 @@
                 <td>
                     <div class="input-value" id="name-input">
                         <div>
-                            <input name = "name" id="user-name" type="text" value="<?php getvar('name'); ?>">
+                            <input name="name" id="user-name" type="text" value="<?php getvar('name'); ?>">
                         </div>
                     </div>
                 </td>
@@ -77,11 +77,10 @@
                 </td>
             </tr>
         </table>
-    </form>
 
 
-    <button onclick="window.location.href='profile.php'" type="submit" id="back-button">Back</button>
-    <button onclick="window.location.href='profile.php'" class="right-button" type="submit" name="submit" id="save-button">Save</button>
+        <button onclick="window.location.href='profile.php'" type="submit" id="back-button">Back</button>
+        <button class="right-button blue-button" type="submit" name="submit" id="save-button">Save</button>
     </form>
 
 </body>
@@ -90,11 +89,11 @@
     document.getElementById("menu-profile").setAttribute("data-menu-selected", "");
 
     var picture_url = document.getElementById("user-profile-picture");
-    picture_url.onchange = function(event){
+    picture_url.onchange = function (event) {
         fileinput.value = (picture_url.value);
     }
 
-    function inputfile(){
+    function inputfile() {
         var user_profile_picture = document.getElementById("user-profile-picture");
         user_profile_picture.click();
     }

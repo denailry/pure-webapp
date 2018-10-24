@@ -270,7 +270,7 @@ span.author {
     border-color: red;
 }
 
-#save-button{
+.blue-button{
     color:white;
     background-color:#00BFFF;
     border-radius:4px;
@@ -395,4 +395,11 @@ td.ratings > p {
 
 #inputfileprofpic{
     display: none;
+}
+
+.title {
+    color: #f26600;
+    font-size: 1.5em;
+    margin: 19px;
+    margin-bottom: 5px;
 }

@@ -24,12 +24,17 @@
     }
 
     if(isset($_POST["submit"])){
-        //$user = Session::get_id();
-        setvar('profilepic',$_POST['fileinput']);
-        setvar('name',$_POST['name']);
-        setvar('phone',$_POST['phone']);
-        setvar('address',$_POST['address']);
+        echo "tes";
         
+        echo $_POST['fileinput'];
+        echo $_POST['name'];
+        echo $_POST['phone-number'];
+        echo $_POST['address'];
+        $user->profilepic = $_POST['fileinput'];
+        $user->name = $_POST['name'];
+        $user->phone = $_POST['phone-number'];
+        $user->address = $_POST['address'];
+        $user->commit();
     }
 
     include 'views/editprofile.php';

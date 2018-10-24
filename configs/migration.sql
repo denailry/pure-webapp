@@ -73,3 +73,12 @@ ALTER TABLE book
 DROP COLUMN review;
 
 UPDATE version SET `number`= 6;
+
+-- Version 7
+ALTER TABLE book
+ADD COLUMN bookpicture VARCHAR(255);
+
+ALTER TABLE orderbook
+ADD COLUMN ordernumber INT UNSIGNED NOT NULL;
+
+UPDATE version SET `number` = 7;
