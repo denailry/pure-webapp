@@ -6,6 +6,8 @@
     require_once "utils/page_var.php";
     require_once "utils/validation.php";
 
+    $RETURN_HTML = true;
+
     $SESSION = null;
 
     if (isset($_COOKIE['access_token'])) {
@@ -19,6 +21,7 @@
             $id = $_GET['book_id'];
             $book = new Book($id);
 
+            setvar('id',$id);
             setvar('title',$book->title);
             setvar('author',$book->author);
             setvar('cover',$book->cover);
@@ -54,21 +57,47 @@
                     $reviews[$j]['reviewcomment'] = $objreview[3];
                     $j=$j+1;
                 }
-            }
-
-            /*insert order*/
-            if (isset($_POST['orderamount'])) {
-                $total = $_POST['orderamount'];
-                $queryorder = $conn->prepare("
-                INSERT INTO orderbook (`orderdate`, `userid`, `bookid`, `total`)
-                VALUES (?, ?, ?, ?)");
-                $date = date('Y-m-d H:i:s');
-                $user_id = $SESSION->get_id();
-                $queryorder->bind_param('siii', $date, $user_id, $id, $total);
-                $queryorder->execute();
-            } 
+            }   
         }
     }
-    
-    include "views/book_detail.php";
+
+    if (isset($_POST['orderandid'])) {
+        $conn->close();
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "tugasbesar1_2018";
+        $current_version = 6;
+        
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        $array = explode('.',$_POST['orderandid']);
+        $total = (int)$array[0];
+        $id = (int)$array[1];
+
+        /*insert order*/
+        $queryorder = $conn->prepare("INSERT INTO orderbook (orderdate, userid, bookid, total) VALUES (?,?,?,?)");
+
+        $date = date('Y-m-d H:i:s');
+        $user_id = $SESSION->get_id();
+        $queryorder->bind_param('siii', $date, $user_id, $id, $total);
+        $queryorder->execute();
+        
+        /*request order id*/
+        $queryorderid = $conn->prepare("SELECT LAST_INSERT_ID()");
+        $queryorderid->execute();
+        $orderidresult = mysqli_stmt_get_result($queryorderid);
+        $objorderid = mysqli_fetch_row($orderidresult);
+        $orderid = $objorderid[0];
+        
+        $response = array(
+            "data" => array("orderid" => $orderid)
+        );
+        echo (json_encode($response));
+        $RETURN_HTML = false;
+    }
+
+    if ($RETURN_HTML) {
+        include "views/book_detail.php";
+    }
 ?>
