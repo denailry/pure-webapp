@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0px;
 }
 
@@ -43,6 +43,11 @@ body{
 
 #menu-bar > div[data-menu-selected] {
     background: #f26600; 
+}
+
+#menu-bar > div:hover {
+    background: #f26600;
+    cursor: pointer;
 }
 
 #menu-bar > div > div {
@@ -143,6 +148,23 @@ body{
     outline: none;
 }
 
+div.profile {
+    display: inline-block;
+    width: 100%;
+    background: #00374c;
+    height: 100px;
+    margin: 0px;
+}
+
+div.profile > img {
+    height: 80%;
+    cursor: pointer;
+    display: flex;
+    float: right;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
 #profile {
     display: inline-block;
     width: 100%;
@@ -153,6 +175,22 @@ body{
 #edit-profile {
     height: 100%;
     cursor: pointer;
+}
+
+div.profile-pic {
+    background-color: #00374c;
+}
+
+div.profile-pic > img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 20%;
+    width: 10%;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: thick;
+    border-color: yellow;
 }
 
 #profile-picture {
@@ -255,6 +293,9 @@ span.subheading {
 
 span.author {
     font-size: 1.2em; 
+    font-weight: bold; 
+    margin: 33px; 
+    margin-top: 0; 
 }
 
 .flex-container{
@@ -402,4 +443,77 @@ td.ratings > p {
     font-size: 1.5em;
     margin: 19px;
     margin-bottom: 5px;
+span.searchresult {
+    display: inline-block;
+    margin: 33px;
+    font-size: 4em;
+    font-weight: bold;
+    color: #f26600;
+}
+
+span.numberofresult {
+    display: inline-block;
+    font-size: 1.5em;
+    color: #4c4c4c;
+}
+
+span.numberofresult > p {
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+table.results {
+    table-layout:fixed;
+    width: 100%;
+    margin-bottom: 3%;
+    margin-left: 33px;
+}
+
+td.cover {
+    width: 150px;
+    height: 150px;
+}
+
+td.cover > img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+}
+
+table.results td.about {
+    display: inline-block;
+    width: 94%;
+    margin-top: 0;
+}
+
+td.about > p.title {
+    display: inline-block;
+    margin: 0px 30px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #f26600;
+}
+
+td.about > p.author {
+    margin: 0px 30px;
+    font-weight: bold;
+    color: #4c4c4c;
+}
+
+td.about > p.detail {
+    margin: 0px 30px;
+    color: #4c4c4c;
+}
+
+#btn-detail {
+    float: right;
+    margin-right: 40px;
+}
+
+#nonedisplay{
+    
+    display:inline-block;
+    display: none;
 }

@@ -94,13 +94,13 @@
 
         function commit() {
             global $conn;
-            if (!User::isValidUsername($this->username)) {
-                return ERR_USERNAME_EXIST;
-            }
-            if (!User::isValidEmail($this->email)) {
-                return ERR_EMAIL_EXIST;
-            }
             if (!isset($this->id)) {
+                if (!User::isValidUsername($this->username)) {
+                    return ERR_USERNAME_EXIST;
+                }
+                if (!User::isValidEmail($this->email)) {
+                    return ERR_EMAIL_EXIST;
+                }
                 $query = $conn->prepare("
                     INSERT INTO user (`name`, `username`, `email`, `password`, `address`, `phone`)
                     VALUES (?, ?, ?, ?, ?, ?)");
@@ -114,10 +114,10 @@
                 }
             } else {
                 $query = $conn->prepare("
-                    UPDATE user SET `name`=?, `username`=?, `email`=?, `address`=?, `phone`=?)
+                    UPDATE user SET `name`=?, `address`=?, `phone`=?
                     WHERE `id`=?");
-                $query->bind_param('ssssi', 
-                    $this->name, $this->username, $this->email, $this->address, $this->phone, $this->id);
+                $query->bind_param('sssi', 
+                    $this->name, $this->address, $this->phone, $this->id);
                 if ($query->execute() === FALSE) {
                     throw new Exception("Unable to update user's data.");
                 }

@@ -35,9 +35,10 @@
         }
 
         global $conn;
-        $query = $conn->prepare("SELECT `cover`,`title`,`total`,`reviewcomment`,`orderdate`,`ordernumber` 
+        $query = $conn->prepare("SELECT `cover`,`title`,`total`,`reviewcomment`,`orderdate`,`ordernumber`,`userid`,orderbook.id AS orderid
         FROM orderbook INNER JOIN book ON orderbook.bookid = book.id
-        WHERE orderbook.userid = ?");
+        WHERE orderbook.userid = ?
+        ORDER BY orderdate DESC");
         $userid = $SESSION->get_id();
         $query->bind_param('i', $userid);
         $query->execute();
@@ -47,39 +48,59 @@
         while($row != null){
             echo "<tr>";
             echo "<td>";
-            echo "<div class='bookimage' style='border:1px'>";
-            echo "<img src=".$row['bookpicture'].">";
-            echo "</div>
+            echo '<div class="bookimage" style="border:1px">';  
+            if(is_null($row['cover'])){
+                echo '<img src=';
+                echo '"statics/img/mocks/detail.png">';
+            }
+            else{
+                echo "<img src=".$row['cover'].">";
+            }
+            echo '</div>
             </td>
             <td>
-                <div id='bookinfo'>
-                    <div class='title' id='booktitle'>";
+                <div id="bookinfo">
+                    <div class="title" id="booktitle">';
             echo $row['title'];
-            echo "</div>
-            <div id='jumlahpesanan'>";
+            echo '</div>
+            <div id="jumlahpesanan">';
             echo "Jumlah :".$row['total'];
             echo "</div>";
             echo "<div id='sudahreview'>";
-            if(is_null($row['review'])){
+            if(is_null($row['reviewcomment'])){
                 echo "Belum direview";
             }
             else{
                 echo "Anda sudah memberikan review";
             }
             echo "</div>";
-            echo "</td>
+            echo '</td>
             <td>
-                <div class='orderinfo'>
-                    <div id='tanggalpesan'>";
-            echo "<div id='ordernumber'>";
+                <div class="orderinfo">
+                    <div id="tanggalpesan">';
+            
             echo $row['orderdate'];//belum format DD - bulan - YYYY
-            echo "</div>
-            <div>";
-            if(is_null($row['review'])){
-                echo "<button onclick='window.location.href=";
-                echo '"review.php"';
-                echo "type='button' class='blue-button' id='review-button'>Review</button>";
+            echo "</div>";
+            echo "<div id='ordernumber'>";
+            echo $row['ordernumber'];
+            echo "</div></div>";
+            if(is_null($row['reviewcomment'])){
+                //<button  class="right-button blue-button" type="submit" name="submit" id="save-button">Save</button>
+                echo '<form action="review.php" method="get" id="input-form" autocomplete="off">';
+                echo '<div id="inputfileprofpic">';
+                echo '<input name="orderid" type="number"  id="orderid" value=';
+                echo $row['orderid'];
+                echo '>';
+                echo '<input type="number" name="userid" id="userid" value=';
+                echo $row['userid'];
+                echo '>';
+                echo '</div>';
+                echo '<button onclick=changePage() class="blue-button" id="review-button">';
+                echo 'Review';
+                echo '</button>';
+                echo '</form>';
             }
+            echo "</div>";
             echo "</td>";
         
 
@@ -91,51 +112,24 @@
 
 
 
-
     ?>
 
-    <table style="border:1px solid black">
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-
-        <tr>
-            <td>
-                <div class="bookimage" style="border:1px">
-                    GAMBAR BUKU
-                </div>
-            </td>
-            <td>
-                <div id="bookinfo">
-                    <div class="title" id="booktitle">
-                        JUDUL BUKU
-                    </div>
-                    <div id="jumlahpesanan">
-                        JUMLAHPESAN
-                    </div>
-
-                    <div id="sudahreview">
-                        SUDAHREVIEW
-                    </div>
-            </td>
-            <td>
-                <div class="orderinfo">
-                    <div id="tanggalpesan">
-                        TANGGAL PESEN
-                    </div>
-                    <div id="ordernumber">
-                        NOMOR ORDER
-                    </div>
-                </div>
-                <button onclick="window.location.href='review.php'" type="button" class="blue-button" id="review-button">Review</button>
-            </td>
-</tr>
     </table>
 
 
     <script type="text/javascript">
-        document.getElementById("menu-history").setAttribute("data-menu-selected", "");
+        orderid.value = $user['orderid'];
+        userid.value = $user['userid'];
+
+        function changePage() {
+            console.log("HTE")
+            window.location.href = "review.php";
+        }
+
+        function changePage() {
+            //document.getElementById('tanggalpesan').innerHTML = "Masuk";
+            window.location.href = "review.php";
+            //window.location.href="review.php?param1="+$row['orderid']+"&param2="+$row['userid'];
+        }
     </script>
 </body>

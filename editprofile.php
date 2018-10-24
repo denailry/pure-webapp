@@ -24,18 +24,15 @@
     }
 
     if(isset($_POST["submit"])){
-        echo "tes";
-        
-        echo $_POST['fileinput'];
-        echo $_POST['name'];
-        echo $_POST['phone-number'];
-        echo $_POST['address'];
         $user->profilepic = $_POST['fileinput'];
         $user->name = $_POST['name'];
         $user->phone = $_POST['phone-number'];
         $user->address = $_POST['address'];
         $user->commit();
+        header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018'.'/profile.php');
+        die();  
     }
+
 
     include 'views/editprofile.php';
 ?>

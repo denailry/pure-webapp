@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <?php embed("main-bar"); ?>
+    <?php embed("main-bar"); setvar('page', 'editprofile'); ?>
 
     <div id="main">
         <h2>Edit Profile<h2>
@@ -73,21 +73,18 @@
                 <td>
                     <div class="input-value">
                         <input name="phone-number" id="user-phone-number" type="text" value="<?php getvar('phone'); ?>">
-                    </div>
+                    </div>  
                 </td>
             </tr>
         </table>
 
 
-        <button onclick="window.location.href='profile.php'" type="submit" id="back-button">Back</button>
-        <button class="right-button blue-button" type="submit" name="submit" id="save-button">Save</button>
+        <button onclick=changePage() type="button" id="back-button">Back</button>
+        <button  class="right-button blue-button" type="submit" name="submit" id="save-button">Save</button>
     </form>
 
 </body>
-
 <script type="text/javascript">
-    document.getElementById("menu-profile").setAttribute("data-menu-selected", "");
-
     var picture_url = document.getElementById("user-profile-picture");
     picture_url.onchange = function (event) {
         fileinput.value = (picture_url.value);
@@ -97,6 +94,10 @@
         var user_profile_picture = document.getElementById("user-profile-picture");
         user_profile_picture.click();
     }
-</script>
 
+    function changePage(){
+        console.log("HTE")
+        window.location.href="profile.php";
+    }
+</script>
 </html>
