@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="statics/css/home.css">
     </head>
     <body>
-        <?php embed("main-bar"); ?>
+        <?php setvar('page', 'browse'); embed("main-bar"); ?>
         <div id="main">
             <figure>
                 <img id="cover" src=<?php getvar('cover'); ?>>
@@ -20,16 +20,16 @@
                 <span class="subheading">Order</span>
                 <form method="POST">
                     <span class="jumlah">Jumlah :</span>
-                    <select name="orderamount">
+                    <select id='orderamount' name="orderamount">
                         <?php
                             for ($i=1;$i<=100;$i++) {
                                 ?>
-                                    <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                 <?php
                             }
                         ?>
                     </select>
-                    <button id="btn-order" class="btn-primary" type="submit">Order</button>
+                    <button id="btn-order" class="btn-primary" type="button" required onclick="startOrder(<?php getvar('id'); ?>)">Order</button>
                 </form>
             </div>
             <div class="review">
@@ -39,7 +39,7 @@
                         foreach ($reviews as $item) {
                             ?>
                             <table class="reviews">
-                                <td class="profile_picture"><img src=<?php $item['profilepic']; ?>></td>
+                                <td class="profile_picture"><img src=<?php echo $item['profilepic']; ?>></td>
                                 <td class="comments">
                                     <span class="username">@<?php echo $item['username']; ?></span>
                                     <span class="comment"><?php echo $item['reviewcomment']; ?></span>
@@ -53,4 +53,31 @@
             </div>
         </div>
     </body>
+    <script src="statics/js/ajax.js"></script>
+    <script type="text/javascript">
+
+        function startOrder(id){
+            var sel = document.getElementById('orderamount');
+            var value = sel.options[sel.selectedIndex].value;
+            
+            var data = {};
+            data['orderandid'] = value.toString()+"."+id;
+
+            let ajax = {};
+            ajax = requestPost(
+                'book_detail.php',
+                data,
+                function(result) {
+                    console.log(typeof result);
+                    console.log(result);
+                    showNotification(result.data.orderid);
+                }
+            );
+        }
+
+        function showNotification(id){
+            window.alert('Pemesanan Berhasil!\nNomor Transaksi : '+id);
+        }
+
+    </script>
 </html>

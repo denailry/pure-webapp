@@ -6,12 +6,12 @@
     </head>
     <body>
         <div id="main">
-            <div id="profile">
-                <img id="edit-profile" src="statics/img/edit-profile.png"
+            <div class="profile">
+                <img src="statics/img/edit-profile.png"
                     onclick="window.location.href='editprofile.php';">
             </div>
-            <div id="profile-picture">
-                <img src="statics/img/default-profile-picture.png">
+            <div class="profile-pic">
+                <img src=<?php getvar('profilepicture'); ?>>>
             </div>
             <div id="profile-name">
                 <span class="name"><?php getvar('name'); ?></span>

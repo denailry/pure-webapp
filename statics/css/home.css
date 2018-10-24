@@ -182,6 +182,7 @@ div.profile-pic {
 }
 
 div.profile-pic > img {
+    object-fit: cover;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -263,6 +264,10 @@ figure {
     display: inline-block;
     text-align: center;
     width: 150px;
+}
+
+figure > img {
+    object-fit: contain;
 }
 
 figure.caption {
@@ -348,7 +353,7 @@ button{
 }
 
 span.detail {
-    display: inline-block;
+    display: block;
     width: 70%;
     font-size: 1.3em;
     margin: 22px;
@@ -475,6 +480,7 @@ td.cover {
 }
 
 td.cover > img {
+    object-fit: contain;
     display: inline-block;
     width: 100%;
     height: 100%;
