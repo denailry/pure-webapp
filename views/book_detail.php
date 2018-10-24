@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="statics/css/home.css">
     </head>
     <body>
-        <?php embed("main-bar"); ?>
+        <?php setvar('page', 'browse'); embed("main-bar"); ?>
         <div id="main">
             <figure>
                 <img id="cover" src=<?php getvar('cover'); ?>>
@@ -24,7 +24,7 @@
                         <?php
                             for ($i=1;$i<=100;$i++) {
                                 ?>
-                                    <option value="<?php echo $i;?>"><?php echo $i;?></option>
+                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                                 <?php
                             }
                         ?>
@@ -39,7 +39,7 @@
                         foreach ($reviews as $item) {
                             ?>
                             <table class="reviews">
-                                <td class="profile_picture"><img src=<?php $item['profilepic']; ?>></td>
+                                <td class="profile_picture"><img src=<?php echo $item['profilepic']; ?>></td>
                                 <td class="comments">
                                     <span class="username">@<?php echo $item['username']; ?></span>
                                     <span class="comment"><?php echo $item['reviewcomment']; ?></span>
