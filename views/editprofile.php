@@ -8,9 +8,9 @@
 </head>
 
 <body class="nunitofont">
-    <?php embed("main-bar"); setvar('page', 'editprofile'); ?>
+    <?php embed("main-bar"); setvar('page', 'profile'); ?>
 
-    <div id="main">
+    <div id="main" class="ml-20">
         <h2>Edit Profile<h2>
     </div>
     <div class="ml-20">
@@ -74,10 +74,19 @@
             </tr>
             <tr>
                 <td>
+                    <div id="failure-notif" class="box-center red-font"></div>
+                    </div>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <button class="mt-20" onclick=changePage() type="button" id="back-button">Back</button>
                 </td>
                 <td>
-                    <button class="right-button blue-button mt-20" type="submit" name="submit" id="save-button">Save</button>
+                    <button onclick="validateEditProfile()" class="right-button blue-button mt-20" type="button" name="submit" id="save-button">Save</button>
+                    <button type="submit" id="editProfileSubmit"></button>
                 </td>
         </table>
 
@@ -86,6 +95,8 @@
     </form>
 </div>
 </body>
+
+<script src="statics/js/failure-notif.js"></script>
 <script type="text/javascript">
     var picture_url = document.getElementById("user-profile-picture");
     picture_url.onchange = function (event) {
@@ -101,6 +112,72 @@
         console.log("HTE")
         window.location.href = "profile.php";
     }
+
+    function isValidPhone(phone) {
+            if (phone.length < 9 || phone.length > 12) {
+                return false;
+            }
+            let i = phone.length;
+            while (i--) {
+                letter = phone[i];
+                if (!isNumber(letter)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+    function isValidName(name) {
+        let i = name.length;
+        if(i>20){
+            return false;
+        }
+        while (i--) {
+            letter = name[i];
+            if (!isAlphabet(letter) && letter != ' ') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    
+    function isAlphabet(letter) {
+            return (letter >= 'a' && letter <= 'z') || 
+                (letter >= 'A' && letter <= 'Z');
+        }
+
+    function isNumber (letter) {
+        return (letter >= '0' && letter <= '9');
+    }
+
+    function validateEditProfile(){
+        var nama = document.getElementById("user-name").value;
+        var address = document.getElementById("user-address").value;
+        var phone = document.getElementById("user-phone-number").value;
+
+        if(nama.trim() === ""){
+            showFailureNotif("Name is empty");
+        }
+        else if(!isValidName(nama)){
+            showFailureNotif("Name is invalid");
+        }
+        else if(address.trim() === ""){
+            showFailureNotif("Address is empty");
+        }
+        else if(phone.trim() === ""){
+            showFailureNotif("Phone number is empty");
+        }
+        else if(!isValidPhone(phone)){
+            showFailureNotif("Phone number is invalid");
+        }
+        else{
+            document.getElementById('editProfileSubmit').click();
+            //document.getElementById('input-form').submit();
+        }
+    }
+
+
 </script>
 
 </html>

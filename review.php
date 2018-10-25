@@ -28,8 +28,8 @@
         setvar('author',$order->get_book()->author);
         setvar('rating',$order->rating);
     }
-
-    if(isset($_POST["submitreview"])){
+    if(isset($_POST["ratinginput"])){
+        
         global $conn;
         $orderid = 
         $rating = $_POST['ratinginput'];

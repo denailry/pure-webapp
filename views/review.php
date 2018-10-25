@@ -1,19 +1,3 @@
-<?php
-    // global $conn;
-    // $orderid = $_GET['orderid'];
-    // $userid = $_GET['userid'];
-    
-    // $query = $conn->prepare('SELECT `title`, `author`, `cover`
-    // FROM orderbook INNER JOIN book ON orderbook.bookid = book.id
-    // WHERE orderbook.id = ?;');
-    
-    // $query->bind_param('i', $orderid);
-    // $query->execute();
-    // $result = mysqli_stmt_get_result($query);
-
-    // $row = $result->fetch_assoc();
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -73,6 +57,22 @@
         function changePage(){
             console.log("HTE")
             window.location.href="profile.php";
+        }
+        
+        function validateReview(){
+            var ratinginput = document.getElementById("ratinginput").value;
+            var inputcomment = document.getElementById("inputcomment").value;
+            if(ratinginput.trim() === ""){
+                window.alert("Rating masih kosong");
+            }
+            else if(inputcomment === ""){
+                window.alert("Comment masih kosong");
+            }
+            else{
+                document.getElementById('input-form').submit();
+                //window.location.href="history.php";
+            }
+
         }
     </script>
 </html>

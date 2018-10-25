@@ -31,7 +31,7 @@
         }   
     }
 
-    if(isset($_POST["submit"])){
+    if(isset($_POST['name'])){
         if(!$_POST['fileinput']==''){
             $user->profilepic = IMAGE_DIR.basename($_POST['fileinput']);
             $tmp_name = $_FILES["profilepic"]["tmp_name"];

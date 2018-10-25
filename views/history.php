@@ -7,7 +7,7 @@
 </head>
 
 <body class="nunitofont">
-    <?php embed("main-bar"); ?>
+    <?php setvar('page', 'history'); embed("main-bar"); ?>
 
     <div id="main">
         <h2>History</h2>
@@ -38,7 +38,7 @@
         }
 
         global $conn;
-        $query = $conn->prepare("SELECT `cover`,`title`,`total`,`reviewcomment`,`orderdate`,`ordernumber`,`userid`,orderbook.id AS orderid
+        $query = $conn->prepare("SELECT `cover`,`title`,`total`,`reviewcomment`,`orderdate`,`userid`,orderbook.id AS orderid
         FROM orderbook INNER JOIN book ON orderbook.bookid = book.id
         WHERE orderbook.userid = ?
         ORDER BY orderdate DESC");
@@ -130,9 +130,9 @@
             echo $monthname,' ';
             echo substr($row['orderdate'],0,4);
             echo "</div>";
-            echo "<div id='ordernumber' class='right-pos'>";
+            echo "<div id='orderid' class='right-pos'>";
             echo "Nomor Order : #";
-            echo $row['ordernumber'];
+            echo $row['orderid'];
             echo "</div></div>";
             if(is_null($row['reviewcomment'])){
                 //<button  class="right-button blue-button" type="submit" name="submit" id="save-button">Save</button>
@@ -180,5 +180,8 @@
             window.location.href = "review.php";
             //window.location.href="review.php?param1="+$row['orderid']+"&param2="+$row['userid'];
         }
+
+        
+        function validate
     </script>
 </body>
