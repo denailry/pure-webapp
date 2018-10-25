@@ -82,3 +82,11 @@ ALTER TABLE orderbook
 ADD COLUMN ordernumber INT UNSIGNED NOT NULL;
 
 UPDATE version SET `number` = 7;
+
+-- Version 8
+INSERT INTO `book`(`title`, `author`, `cover`, `detail`) 
+VALUES ('Bis Fantastis & Cara Menemukannya','Neue Salamander','statics/img/fantastic_beasts.jpg','Buku ini adalah buku ajaib yang berisi tentang dongeng-dongeng di masa lampau. Salah satu cerita dari buku ini adalah tentang bis ajaib.');
+
+INSERT INTO `book`(`title`, `author`, `cover`, `detail`) 
+VALUES ('Nota Hidup','Light R. D. B. ','statics/img/death_note.jpg','Buku ajaib yang berisi nama orang-orang terpilih. Jika namamu tertulis di buku ini maka kamu adalah salah satu orang yang beruntung.');
+UPDATE version SET `number` = 8;
