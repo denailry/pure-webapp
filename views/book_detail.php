@@ -51,7 +51,7 @@
                             }
                         ?>
                     </select>
-                    <button id="btn-order" class="btn-primary" type="button" required onclick="startOrder(<?php getvar('id'); ?>)">Order</button>
+                    <button id="btn-order" class="btn-primary" type="button" onclick="startOrder(<?php getvar('id'); ?>)">Order</button>
                 </form>
             </div>
             <div class="review">
