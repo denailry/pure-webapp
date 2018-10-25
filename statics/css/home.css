@@ -630,6 +630,8 @@ td.about > p.detail {
 
 .mlreview{
     margin-left:200px;
+}
+
 div.modal {
     display: none;
     position: fixed;
