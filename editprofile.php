@@ -5,6 +5,9 @@
     require_once "models/session.php";
     require_once "utils/common.php";
     require_once "utils/page_var.php";
+
+    define("IMAGE_DIR", "statics/img/profile/");
+
     force_login();
     $SESSION = null;
 
@@ -30,7 +33,9 @@
 
     if(isset($_POST["submit"])){
         if(!$_POST['fileinput']==''){
-            $user->profilepic = 'statics/img/'.basename($_POST['fileinput']).PHP_EOL;
+            $user->profilepic = IMAGE_DIR.basename($_POST['fileinput']);
+            $tmp_name = $_FILES["profilepic"]["tmp_name"];
+            move_uploaded_file($tmp_name, IMAGE_DIR.basename($_POST['fileinput']));
         }
         $user->name = $_POST['name'];
         $user->phone = $_POST['phone-number'];
@@ -39,7 +44,6 @@
         header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018'.'/profile.php');
         die();  
     }
-
 
     include 'views/editprofile.php';
 ?>
