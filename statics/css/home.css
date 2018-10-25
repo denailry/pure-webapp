@@ -246,6 +246,12 @@ table.profile td.icon > img {
     height: 100%;
 }
 
+table.profile td.profiletitle {
+    width: 20%;
+    height: 20px;
+    padding: 5px;
+}
+
 table.profile td.title {
     width: 20%;
     height: 20px;
