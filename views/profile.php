@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="statics/css/home.css">
     </head>
     <body>
+        <?php embed("main-bar"); ?>
         <div id="main">
             <div class="profile">
                 <img src="statics/img/edit-profile.png"
