@@ -7,7 +7,7 @@
     <body>
         <?php setvar('page', 'browse'); embed("main-bar"); ?>
         <div id="main">
-            <figure>
+            <figure class="bookcover">
                 <img id="cover" src=<?php getvar('cover'); ?>>
                 <figcaption class="caption"><?php getvar('rating'); ?>/5.0</figcaption>
             </figure>
@@ -44,7 +44,12 @@
                                     <span class="username">@<?php echo $item['username']; ?></span>
                                     <span class="comment"><?php echo $item['reviewcomment']; ?></span>
                                 </td>
-                                <td class="ratings"><p><?php echo $item['rating']; ?>/5.0</p></td>
+                                <td class="ratings">
+                                    <figure class="reviewrating">
+                                        <img src="statics/img/single-star.png">
+                                        <figcaption><?php echo $item['rating']; ?>/5.0</figcaption>
+                                    </figure>
+                                </td>
                             </table>
                             <?php
                         }
@@ -52,7 +57,36 @@
                 ?>                
             </div>
         </div>
+
+        <div id="modaltransaksi" class="modal">
+          <div class="modalcontent">
+            <span class="close" onclick="spanClose()">X</span>
+            <table class="contentbox">
+                <td class="checkmark"><img src="statics/img/checkmark.png"></td>
+                <td class="insidecontent">
+                    <p id="pesan">Pemesanan Berhasil!</p>
+                    <p id="transaksi">Nomor Transaksi: </p>
+                    <p id="nomortransaksi"></p>
+                </td>
+            </table>
+          </div>
+        </div>
+
     </body>
+    <script>
+
+        var modal = document.getElementById('modaltransaksi');
+
+        function showModal(id){
+            document.getElementById('nomortransaksi').innerHTML = id;
+            modal.style.display = "block";
+        }
+
+        function spanClose(){
+            modal.style.display = "none";
+        }
+
+    </script>
     <script src="statics/js/ajax.js"></script>
     <script type="text/javascript">
 
@@ -76,7 +110,7 @@
         }
 
         function showNotification(id){
-            window.alert('Pemesanan Berhasil!\nNomor Transaksi : '+id);
+            showModal(id);
         }
 
     </script>

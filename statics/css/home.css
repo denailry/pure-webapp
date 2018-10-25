@@ -247,6 +247,12 @@ table.profile td.icon > img {
     height: 100%;
 }
 
+table.profile td.profiletitle {
+    width: 20%;
+    height: 20px;
+    padding: 5px;
+}
+
 table.profile td.title {
     width: 20%;
     height: 20px;
@@ -396,6 +402,7 @@ td.profile_picture {
 }
 
 td.profile_picture > img {
+    object-fit: cover;
     display: inline-block;
     width: 100%;
     height: 100%;
@@ -404,8 +411,9 @@ td.profile_picture > img {
 
 td.comments {
     display: inline-block;
-    width: 65%;
+    width: 100%;
     margin-top: 0;
+    margin-right: 0;
 }
 
 td.comments > span.username {
@@ -425,10 +433,21 @@ td.comments > span.comment {
 
 td.ratings {
     width: 7%;
+    margin-left: 0;
 }
 
-td.ratings > p {
+figure.reviewrating {
+    display: inline-block;
+    margin-left: 0;
+    text-align: center;
+    width: 100%;
     font-weight: bold;
+    margin-right: 33px;
+}
+
+figure.reviewrating > img {
+    width: 50%;
+    margin-left: 0;
 }
 
 #profile-picture{
@@ -611,4 +630,70 @@ td.about > p.detail {
 
 .mlreview{
     margin-left:200px;
+div.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 19%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+div.modalcontent {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 5px;
+    border: 1px solid #888;
+    width: 30%;
+}
+
+span.close {
+    padding: 2px;
+    color: #585858;
+    float: right;
+    cursor: pointer;
+}
+
+table.contentbox {
+    width: 100%;
+}
+
+td.checkmark {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin-left: 10%;
+    margin-right: 0px;
+}
+
+td.insidecontent {
+    margin-left: 0px;
+}
+
+td.insidecontent > p#pesan {
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-left: 0px;
+}
+
+td.insidecontent > p#transaksi {
+    display: inline-block;
+    margin-top: 0;
+    margin-left: 0px;
+    width: 55%;
+}
+
+td.insidecontent > p#nomortransaksi {
+    display: inline-block;
+    margin-top: 0;
+}
+
+td.checkmark > img {
+    display: inline-block;
+    width: 80%;
 }
