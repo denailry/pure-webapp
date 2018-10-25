@@ -634,10 +634,6 @@ td.about > p.detail {
     margin-bottom: 10px;
 }
 
-.mlreview{
-    margin-left:200px;
-}
-
 div.modal {
     display: none;
     position: fixed;

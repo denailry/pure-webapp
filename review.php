@@ -26,6 +26,7 @@
         setvar('title',$order->get_book()->title);
         setvar('cover',$order->get_book()->cover);
         setvar('author',$order->get_book()->author);
+        setvar('rating',$order->rating);
     }
 
     if(isset($_POST["submitreview"])){
