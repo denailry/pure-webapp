@@ -12,23 +12,23 @@
     <div id="main">
         <h2>Edit Profile<h2>
     </div>
-
+    <div class="ml-20">
     <form method="POST" id="input-form" autocomplete="off">
-        <table>
-            <col width="200">
-            <col width="400">
+        <table class="ahistorybook">
+            <col width="100">
+            <col width="300">
             <tr>
                 <td>
-                    <div id="profile-picture">
-                        <img src="/mocks/edit_profile.png" alt="foto profil">
+                    <div id="profile-picturee">
+                        <img height="100" width="100"  src=<?php getvar('profilepicture'); ?> border="2">
                     </div>
                 </td>
                 <td>
-                    <div class="input-fields" id="update-profile-picture">
+                    <div class="input-fields-table" id="update-profile-picture">
                         <label>Update profile picture</label>
                     </div>
                     <br>
-                    <input class="input-value inputbox inputfile" name='fileinput' id="fileinput" type="text" name="fname">
+                    <input class="input-value ml-10 inputbox inputfile" name='fileinput' id="fileinput" type="text" name="fname">
                     <div class="input-value inputfile" id="inputfileprofpic">
                         <input name="profilepic" type="file" id="user-profile-picture" size="50">
                     </div>
@@ -37,56 +37,53 @@
             </tr>
             <tr>
                 <td>
-                    <div class="input-fields">
+                    <div class="input-fields-table">
                         <label for="name">Name</label>
                     </div>
                 </td>
                 <td>
-                    <div class="input-value" id="name-input">
+                    <div id="name-input">
                         <div>
-                            <input name="name" id="user-name" type="text" value="<?php getvar('name'); ?>">
+                            <input class="input-value-table" name="name" id="user-name" type="text" value="<?php getvar('name'); ?>">
                         </div>
                     </div>
                 </td>
             </tr>
             <td>
-                <div class="input-fields">
+                <div class="input-fields-table">
                     <label for="address">Address</label>
                 </div>
             </td>
             <td>
-                <div class="input-value">
-                    <input name="address" id="user-address" type="text" value="<?php getvar('address'); ?>">
-                    <br>
-                    <br>
-                    <br>
+                <div>
+                    <textarea class="input-value-table" name="address" id="user-address" type="text" rows="4"><?php getvar('address'); ?></textarea>
                 </div>
             </td>
             <tr>
                 <td>
-                    <div class="input-fields">
+                    <div class="input-fields-table">
                         <label for="phone-number">Phone Number</label>
                     </div>
                 </td>
                 <td>
-                    <div class="input-value">
-                        <input name="phone-number" id="user-phone-number" type="text" value="<?php getvar('phone'); ?>">
+                    <div>
+                        <input class="input-value-table" name="phone-number" id="user-phone-number" type="text" value="<?php getvar('phone'); ?>">
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button onclick=changePage() type="button" id="back-button">Back</button>
+                    <button class="mt-20" onclick=changePage() type="button" id="back-button">Back</button>
                 </td>
                 <td>
-                    <button class="right-button blue-button" type="submit" name="submit" id="save-button">Save</button>
+                    <button class="right-button blue-button mt-20" type="submit" name="submit" id="save-button">Save</button>
                 </td>
         </table>
 
 
 
     </form>
-
+</div>
 </body>
 <script type="text/javascript">
     var picture_url = document.getElementById("user-profile-picture");

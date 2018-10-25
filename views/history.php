@@ -15,7 +15,10 @@
 
 
     <?php 
-        echo "<table>";
+        echo '<table class="ahistorybook">';
+        echo '<col>';
+        echo '<col width="300">';
+        echo '<col width="150">';
         echo "<tr>
         <th></th>
         <th></th>
@@ -48,20 +51,20 @@
         while($row != null){
             echo "<tr>";
             echo "<td>";
-            echo '<div class="bookimage" style="border:1px">';  
+            echo '<div class="bookimage">';  
             if(is_null($row['cover'])){
                 echo '<img class="historybook" src=';
                 echo '"statics/img/mocks/detail.png">';
             }
             else{
-                echo '<img id="historybook" src=';
+                echo '<img class="historybook" max-height="50" id="historybook" src=';
                 echo $row['cover'];
                 echo '>';
             }
             echo '</div>
             </td>
             <td>
-                <div id="bookinfo">
+                <div class="ml" id="bookinfo">
                     <div  id="booktitle">';
             echo $row['title'];
             echo '</div>
@@ -78,12 +81,12 @@
             echo "</div>";
             echo '</td>
             <td>
-                <div class="orderinfo">
+                <div class="orderinfo ml right-pos"">
                     <div id="tanggalpesan">';
             
             echo $row['orderdate'];//belum format DD - bulan - YYYY
             echo "</div>";
-            echo "<div id='ordernumber'>";
+            echo "<div id='ordernumber' class='right-pos'>";
             echo "Nomor Order : #";
             echo $row['ordernumber'];
             echo "</div></div>";
@@ -98,14 +101,13 @@
                 echo $row['userid'];
                 echo '>';
                 echo '</div>';
-                echo '<button onclick=changePage() class="blue-button" id="review-button">';
+                echo '<button  onclick=changePage() class="blue-button right-button" id="review-button">';
                 echo 'Review';
                 echo '</button>';
                 echo '</form>';
             }
             echo "</div>";
             echo "</td>";
-        
 
 
             //echo $row['title'];

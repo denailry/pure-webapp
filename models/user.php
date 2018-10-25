@@ -114,10 +114,10 @@
                 }
             } else {
                 $query = $conn->prepare("
-                    UPDATE user SET `name`=?, `address`=?, `phone`=?
+                    UPDATE user SET `name`=?, `address`=?, `phone`=?, `profilepic`=?
                     WHERE `id`=?");
-                $query->bind_param('sssi', 
-                    $this->name, $this->address, $this->phone, $this->id);
+                $query->bind_param('ssssi', 
+                    $this->name, $this->address, $this->phone,$this->profilepic, $this->id);
                 if ($query->execute() === FALSE) {
                     throw new Exception("Unable to update user's data.");
                 }

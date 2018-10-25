@@ -33,23 +33,29 @@
     echo $row["author"];
     echo '</div>';
     echo '</div>';
-    echo '<div>';
-    echo '<img src=';
+    echo '<div class="bookimage">';
+    echo '<img class="bookreview" src=';
     echo $row["cover"];
     echo ' alt="cover buku">';
     echo '</div>';
     echo '</div>';
+    echo '<div class="ml-20">';
     echo '<div class="subjudul">';
     echo 'Add Rating';
     echo '</div>';
     echo '<form method="POST" id="input-form" autocomplete="off">';
 
     echo '<div>';
-    echo '<input class="input-value inputbox" name="ratinginput" id="ratinginput" type="number>';
+    echo '<input class="input-value inputbox inputreview" name="ratinginput" id="ratinginput" type="number>';
     echo '</div>';
 
     echo '<div class="subjudul">';
     echo 'Add Comment';
+    echo '</div>';
+
+    echo '<div>';
+    echo '<textarea class="input-value inputbox inputreview" name="inputcomment" type="text"  id="inputcomment" rows="4">';
+    echo '</textarea>';
     echo '</div>';
 
     echo '<div id="inputfileprofpic">';
@@ -57,12 +63,9 @@
     echo $orderid;
     echo '>';
     echo '</div>';
-
-    echo '<div>';
-    echo '<input class="input-value inputbox" name="inputcomment" type="text">';
-    echo '</div>';
+    
     echo '<button onclick=changePage() type="button" id="back-button">Back</button>';
-    echo '<button  class="right-button blue-button" type="submit" name="submitreview" id="save-button">Save</button>';
+    echo '<button  class="mlreview blue-button" type="submit" name="submitreview" id="save-button">Save</button>';
     echo '</form>';
 
     $row = $result->fetch_assoc();
