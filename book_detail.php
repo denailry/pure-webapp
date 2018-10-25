@@ -34,11 +34,12 @@
 
             $ratingresult = mysqli_stmt_get_result($queryrating);
             if (mysqli_num_rows($ratingresult) == 0) {
-                setvar('rating',number_format((float)0, 1, '.', ''));
+                $rating = number_format((float)0, 1, '.', '');
             } else {
                 $objrating = mysqli_fetch_row($ratingresult);
-                setvar('rating',number_format((float)$objrating[0], 1, '.', ''));
+                $rating = number_format((float)$objrating[0], 1, '.', '');
             }
+            setvar('rating',$rating);
 
             /*find reviews*/ 
             $queryreview = $conn->prepare("SELECT profilepic, username, rating, reviewcomment FROM orderbook INNER JOIN user ON orderbook.userid=user.id WHERE orderbook.bookid=? AND rating IS NOT NULL");
@@ -51,7 +52,11 @@
             } else {
                 $j = 0;
                 while ($objreview = mysqli_fetch_row($reviewresult)) {
-                    $reviews[$j]['profilepic'] = $objreview[0];
+                    if ($objreview[0] != NULL) {
+                        $reviews[$j]['profilepic'] = $objreview[0];
+                    } else {
+                        $reviews[$j]['profilepic'] = 'statics/img/default-profile-picture.png';
+                    }
                     $reviews[$j]['username'] = $objreview[1];
                     $reviews[$j]['rating'] = number_format((float)$objreview[2], 1, '.', '');
                     $reviews[$j]['reviewcomment'] = $objreview[3];

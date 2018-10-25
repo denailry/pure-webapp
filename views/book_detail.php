@@ -9,7 +9,29 @@
         <div id="main">
             <figure class="bookcover">
                 <img id="cover" src=<?php getvar('cover'); ?>>
-                <figcaption class="caption"><?php getvar('rating'); ?>/5.0</figcaption>
+                <?php 
+                    switch (true) {
+                        case ($rating == 5):
+                            echo "<img id='starrating' src='statics/img/5-stars.png'>";
+                            break;
+                        case ($rating >= 4 && $rating < 5): 
+                            echo "<img id='starrating' src='statics/img/4-stars.png'>";
+                            break;
+                        case ($rating >= 3 && $rating < 4): 
+                            echo "<img id='starrating' src='statics/img/3-stars.png'>";
+                            break;
+                        case ($rating >= 2 && $rating < 3): 
+                            echo "<img id='starrating' src='statics/img/2-stars.png'>";
+                            break;
+                        case ($rating >= 1 && $rating < 2): 
+                            echo "<img id='starrating' src='statics/img/1-star.png'>";
+                            break;
+                        default:
+                            echo "<img id='starrating' src='statics/img/0-star.png'>";
+                            break;
+                    }  
+                ?>
+                <figcaption class="caption" style="font-weight: bold;"><?php getvar('rating'); ?>/5.0</figcaption>
             </figure>
             <div>
                 <h3><?php getvar('title'); ?></h3>
