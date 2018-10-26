@@ -105,6 +105,10 @@
     padding: 15px;
 }
 
+#box-container > div {
+    text-align: center;
+}
+
 #box-container input {
     border: 1px solid #000000;
     background: #ffffff !important;
@@ -182,4 +186,8 @@
 textarea {
     resize: none;
     overflow: auto;
+}
+
+.hidden {
+    display: none;
 }

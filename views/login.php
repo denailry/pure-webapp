@@ -2,12 +2,12 @@
 <html>
     <head>
         <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="statics/css/form.css">
+        <link rel="stylesheet" type="text/css" href="statics/css/form.css?version=6">
     </head>
     <body>
         <div id="box-wrapper">
             <div id="box-container">
-                <div style="text-align: center;">
+                <div>
                     <h1>LOGIN</h1>
                 </div>
                 <form method="POST" autocomplete="off">

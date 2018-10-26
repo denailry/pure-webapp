@@ -7,7 +7,7 @@
     <body>
         <div id="box-wrapper">
             <div id="box-container">
-                <div style="text-align: center;">
+                <div>
                     <h1>REGISTER</h1>
                 </div>
                 <form id="input-form" method="POST">
@@ -84,7 +84,7 @@
                     <div id="box-link">
                         <a href="login.php">Already have an account?</a>
                     </div>
-                    <button id="submitter" type="submit" name="submit" style="display: none;"></button>
+                    <button id="submitter" class="hidden" type="submit" name="submit"></button>
                     <div class="box-center">
                         <button id="submit" type="button" name="submit" onclick="failureCheck()">Register</button>
                     </div>
