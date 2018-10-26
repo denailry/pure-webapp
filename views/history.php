@@ -1,185 +1,104 @@
-<!DOCTYPE html>
-<html>
+<?php
+    $months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", 
+        "September", "Oktober", "November", "Desember"];
+    function formatDate($date) {
+        global $months;
+        return substr($date, 8, 2).' '.$months[((int)substr($date, 5, 2)) + 1].' '.substr($date,0,4);
+    }
 
-<head>
-    <title>History</title>
-    <link rel="stylesheet" type="text/css" href="statics/css/home.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-</head>
-
-<body class="nunitofont">
-    <?php setvar('page', 'history'); embed("main-bar"); ?>
-
-    <div id="main">
-        <?php 
-            echo '<table class="ahistorybook">';
-            echo '<caption>History</caption>';
-            echo '<col>';
-            echo '<col width="300">';
-            echo '<col width="150">';
-            echo "<tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            </tr>";
-
-
-            if ($SESSION == null) {
-                force_login();
-            } else {
-                $user = $SESSION->get_user();
-                setvar('name',$user->name);
-                setvar('username',$user->username);
-                setvar('email',$user->email);
-                setvar('address',$user->address);
-                setvar('phone',$user->phone);
-            }
-
-            global $conn;
-            $query = $conn->prepare("SELECT `cover`,`title`,`total`,`reviewcomment`,`orderdate`,`userid`,orderbook.id AS orderid
-            FROM orderbook INNER JOIN book ON orderbook.bookid = book.id
-            WHERE orderbook.userid = ?
-            ORDER BY orderdate DESC");
-            $userid = $SESSION->get_id();
-            $query->bind_param('i', $userid);
-            $query->execute();
-            $result = mysqli_stmt_get_result($query);
-
-            $row = $result->fetch_assoc();
-            while($row != null){
-                echo "<tr>";
-                echo "<td>";
-                echo '<div class="bookimage">';  
-                if(is_null($row['cover'])){
-                    echo '<img class="historybook" src=';
-                    echo '"statics/img/mocks/detail.png">';
-                }
-                else{
-                    echo '<img class="historybook" max-height="50" id="historybook" src=';
-                    echo $row['cover'];
-                    echo '>';
-                }
-                echo '</div>
+    function createOrderComponent($order, $cover, $sudahreview, $formComponent) {
+        return '
+            <tr>
+                <td>
+                    <div class="bookimage">
+                        <img class="historybook" max-height="50" id="historybook" src="'.$cover.'">;
+                    </div>
                 </td>
                 <td>
                     <div class="ml" id="bookinfo">
-                        <div  id="booktitle">';
-                echo $row['title'];
-                echo '</div>
-                <div id="jumlahpesanan">';
-                echo "Jumlah :".$row['total'];
-                echo "</div>";
-                echo "<div id='sudahreview'>";
-                if(is_null($row['reviewcomment'])){
-                    echo "Belum direview";
-                }
-                else{
-                    echo "Anda sudah memberikan review";
-                }
-                echo "</div>";
-                echo '</td>
+                        <div  id="booktitle">
+                            '.$order->get_book()->title.'
+                        </div>
+                        <div id="jumlahpesanan">
+                            Jumlah: '.$order->total.'
+                        </div>
+                        <div id="sudahreview">
+                            '.$sudahreview.'
+                        </div>
+                    </div>
+                </td>
                 <td>
-                    <div class="orderinfo ml right-pos"">
-                        <div id="tanggalpesan">';
-                
-                // echo $row['orderdate'];//belum format DD - bulan - YYYY
-                echo substr($row['orderdate'],8,2).' ';
-                $month = substr($row['orderdate'],5,2);
-                switch($month){
-                    case 1:
-                        $monthname="Januari";
-                        break;
-                    case 2:
-                        $monthname="Februari";
-                        break;
-                    case 3:
-                        $monthname="Maret";
-                        break;
-                    case 4:
-                        $monthname="April";
-                        break;
-                    case 5:
-                        $monthname="Mei";
-                        break;
-                    case 6:
-                        $monthname="Juni";
-                        break;
-                    case 7:
-                        $monthname="Juli";
-                        break;
-                    case 8:
-                        $monthname="Agustus";
-                        break;
-                    case 9:
-                        $monthname="September";
-                        break;
-                    case 10:
-                        $monthname="Oktober";
-                        break;
-                    case 11:
-                        $monthname="November";
-                        break;
-                    case 12:
-                        $monthname="Desember";
-                        break;
-                    default:
-                        $monthname="Januari";
-                }
-                echo $monthname,' ';
-                echo substr($row['orderdate'],0,4);
-                echo "</div>";
-                echo "<div id='orderid' class='right-pos'>";
-                echo "Nomor Order : #";
-                echo $row['orderid'];
-                echo "</div></div>";
-                if(is_null($row['reviewcomment'])){
-                    //<button  class="right-button blue-button" type="submit" name="submit" id="save-button">Save</button>
-                    echo '<form action="review.php" method="get" id="input-form" autocomplete="off">';
-                    echo '<div id="inputfileprofpic">';
-                    echo '<input name="orderid" type="number"  id="orderid" value=';
-                    echo $row['orderid'];
-                    echo '>';
-                    echo '<input type="number" name="userid" id="userid" value=';
-                    echo $row['userid'];
-                    echo '>';
-                    echo '</div>';
-                    echo '<button  onclick=changePage() class="blue-button right-button" id="review-button">';
-                    echo 'Review';
-                    echo '</button>';
-                    echo '</form>';
-                }
-                echo "</div>";
-                echo "</td>";
+                    <div class="orderinfo ml right-pos" style="text-align: right;">
+                        <div id="tanggalpesan">
+                            '.formatDate($order->orderdate).'
+                        </div>
+                        <div id="orderid">
+                            Nomor Order : #'.$order->get_id().'
+                        </div>
+                        '.$formComponent.'
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td></td><td></td>
+                <td>
+                    <div style="height: 30px;">
+                    </div>
+                </td>
+            </tr>
+        ';
+    }
 
+    function createReviewFormComponenet($orderid) {
+        return '
+            <form action="review.php" method="get" id="input-form" autocomplete="off">
+                <div id="inputfileprofpic">
+                    <input name="orderid" type="number"  id="orderid" value='.$orderid.'>
+                </div>
+                <button id="review-button" class="blue-button right-button">
+                    Review
+                </button>
+            </form>
+        ';
+    }
 
-                //echo $row['title'];
-                //Lakukan prosees print
-                $row = $result->fetch_assoc();
-            }
-
-
-
-        ?>
-
-        </table>
-    </div>    
-
-    <script type="text/javascript">
-        orderid.value = $user['orderid'];
-        userid.value = $user['userid'];
-
-        function changePage() {
-            console.log("HTE")
-            window.location.href = "review.php";
+    $history = Order::get_history($SESSION->get_id());
+    $historyView = "";
+    foreach ($history as $order) {
+        if ($order->get_book()->cover == null) {
+            $cover = 'statics/img/mocks/detail.png';
+        } else {
+            $cover = $order->get_book()->cover;
         }
-
-        function changePage() {
-            //document.getElementById('tanggalpesan').innerHTML = "Masuk";
-            window.location.href = "review.php";
-            //window.location.href="review.php?param1="+$row['orderid']+"&param2="+$row['userid'];
+        if ($order->reviewcomment == null) {
+            $sudahreview = "Belum direview";
+            $formComponent = createReviewFormComponenet($order->get_id());
+        } else {
+            $sudahreview = "Anda sudah memberikan review";
+            $formComponent = "";
         }
+        $historyView = $historyView.createOrderComponent($order, $cover, $sudahreview, $formComponent);
+    }
+    setvar('history', $historyView);
+?>
 
-        
-        function validate
-    </script>
-</body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>History</title>
+        <link rel="stylesheet" type="text/css" href="statics/css/home.css?version=3">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    </head>
+    <body class="nunitofont">
+        <?php setvar('page', 'history'); embed("main-bar"); ?>
+        <div id="main">
+            <table class="ahistorybook">
+                <caption>History</caption>
+                <col>
+                <col width="300">
+                <col width="150">
+                <?php getvar('history') ?>
+            </table>
+        </div>    
+    </body>
+</html>
