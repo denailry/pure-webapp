@@ -11,7 +11,7 @@
             <tr>
                 <td>
                     <div class="bookimage">
-                        <img class="historybook" max-height="50" id="historybook" src="'.$cover.'">;
+                        <img class="historybook" max-height="50" id="historybook" src="'.$cover.'">`
                     </div>
                 </td>
                 <td>
@@ -27,16 +27,18 @@
                         </div>
                     </div>
                 </td>
-                <td>
-                    <div class="orderinfo ml">
-                        <div id="tanggalpesan">
-                            '.formatDate($order->orderdate).'
+                <td style="position: relative;">
+                    <div style="position: absolute; top: 0px; bottom: 0px; width:100%;">
+                        <div class="orderinfo" style="position: absolute; top: 0px; left: 0px; ">
+                            <div id="tanggalpesan">
+                                '.formatDate($order->orderdate).'
+                            </div>
+                            <div id="orderid">
+                                Nomor Order : #'.$order->get_id().'
+                            </div>
                         </div>
-                        <div id="orderid">
-                            Nomor Order : #'.$order->get_id().'
-                        </div>
-                        '.$formComponent.'
                     </div>
+                    '.$formComponent.'
                 </td>
             </tr>
             <tr>
@@ -51,14 +53,16 @@
 
     function createReviewFormComponenet($orderid) {
         return '
-            <form action="review.php" method="get" id="input-form" autocomplete="off">
-                <div id="inputfileprofpic">
-                    <input name="orderid" type="number"  id="orderid" value='.$orderid.'>
-                </div>
-                <button id="review-button" class="blue-button right-button">
-                    Review
-                </button>
-            </form>
+            <div style="position: absolute; right: 0px; bottom: 0px;">
+                <form action="review.php" method="get" id="input-form" autocomplete="off">
+                    <div id="inputfileprofpic">
+                        <input name="orderid" type="number"  id="orderid" value='.$orderid.'>
+                    </div>
+                    <button id="review-button" class="blue-button">
+                        Review
+                    </button>
+                </form>
+            </div>
         ';
     }
 
