@@ -8,8 +8,9 @@ Pada tugas besar ini, Anda diminta untuk membuat aplikasi *toko buku online* **b
 Anda diminta untuk membuat tampilan sedemikian hingga mirip dengan tampilan pada contoh. Website yang diminta tidak responsive. Desain tampilan tidak perlu dibuat indah. Icon dan jenis font tidak harus sama dengan contoh. Warna font, garis pemisah, dan perbedaan ukuran font harus terlihat sesuai contoh. Format rating dan waktu harus terlihat sesuai contoh. Perhatikan juga **tata letak** elemen-elemen.
 
 ## Anggota Tim
-
-Setiap kelompok beranggotakan **3 orang dari kelas yang sama**. Jika jumlah mahasiswa dalam satu kelas modulo 3 menghasilkan 1, maka hanya 1 kelompok terdiri dari 4 mahasiswa. Jika jumlah mahasiswa modulo 3 menghasilkan 2, maka ada dua kelompok yang beranggotakan 4 orang.
+- Mathias Novianto      | 13516021 
+- Prisila Michelle      | 13516129 
+- Daniel Ryan Levyson   | 13516132
 
 ## Petunjuk Pengerjaan
 
