@@ -10,161 +10,158 @@
     <?php setvar('page', 'history'); embed("main-bar"); ?>
 
     <div id="main">
-        <h2>History</h2>
-    </div>
+        <?php 
+            echo '<table class="ahistorybook">';
+            echo '<caption>History</caption>';
+            echo '<col>';
+            echo '<col width="300">';
+            echo '<col width="150">';
+            echo "<tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            </tr>";
 
 
-    <?php 
-        echo '<table class="ahistorybook">';
-        echo '<col>';
-        echo '<col width="300">';
-        echo '<col width="150">';
-        echo "<tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>";
-
-
-        if ($SESSION == null) {
-            force_login();
-        } else {
-            $user = $SESSION->get_user();
-            setvar('name',$user->name);
-            setvar('username',$user->username);
-            setvar('email',$user->email);
-            setvar('address',$user->address);
-            setvar('phone',$user->phone);
-        }
-
-        global $conn;
-        $query = $conn->prepare("SELECT `cover`,`title`,`total`,`reviewcomment`,`orderdate`,`userid`,orderbook.id AS orderid
-        FROM orderbook INNER JOIN book ON orderbook.bookid = book.id
-        WHERE orderbook.userid = ?
-        ORDER BY orderdate DESC");
-        $userid = $SESSION->get_id();
-        $query->bind_param('i', $userid);
-        $query->execute();
-        $result = mysqli_stmt_get_result($query);
-
-        $row = $result->fetch_assoc();
-        while($row != null){
-            echo "<tr>";
-            echo "<td>";
-            echo '<div class="bookimage">';  
-            if(is_null($row['cover'])){
-                echo '<img class="historybook" src=';
-                echo '"statics/img/mocks/detail.png">';
+            if ($SESSION == null) {
+                force_login();
+            } else {
+                $user = $SESSION->get_user();
+                setvar('name',$user->name);
+                setvar('username',$user->username);
+                setvar('email',$user->email);
+                setvar('address',$user->address);
+                setvar('phone',$user->phone);
             }
-            else{
-                echo '<img class="historybook" max-height="50" id="historybook" src=';
-                echo $row['cover'];
-                echo '>';
-            }
-            echo '</div>
-            </td>
-            <td>
-                <div class="ml" id="bookinfo">
-                    <div  id="booktitle">';
-            echo $row['title'];
-            echo '</div>
-            <div id="jumlahpesanan">';
-            echo "Jumlah :".$row['total'];
-            echo "</div>";
-            echo "<div id='sudahreview'>";
-            if(is_null($row['reviewcomment'])){
-                echo "Belum direview";
-            }
-            else{
-                echo "Anda sudah memberikan review";
-            }
-            echo "</div>";
-            echo '</td>
-            <td>
-                <div class="orderinfo ml right-pos"">
-                    <div id="tanggalpesan">';
-            
-            // echo $row['orderdate'];//belum format DD - bulan - YYYY
-            echo substr($row['orderdate'],8,2).' ';
-            $month = substr($row['orderdate'],5,2);
-            switch($month){
-                case 1:
-                    $monthname="Januari";
-                    break;
-                case 2:
-                    $monthname="Februari";
-                    break;
-                case 3:
-                    $monthname="Maret";
-                    break;
-                case 4:
-                    $monthname="April";
-                    break;
-                case 5:
-                    $monthname="Mei";
-                    break;
-                case 6:
-                    $monthname="Juni";
-                    break;
-                case 7:
-                    $monthname="Juli";
-                    break;
-                case 8:
-                    $monthname="Agustus";
-                    break;
-                case 9:
-                    $monthname="September";
-                    break;
-                case 10:
-                    $monthname="Oktober";
-                    break;
-                case 11:
-                    $monthname="November";
-                    break;
-                case 12:
-                    $monthname="Desember";
-                    break;
-                default:
-                    $monthname="Januari";
-            }
-            echo $monthname,' ';
-            echo substr($row['orderdate'],0,4);
-            echo "</div>";
-            echo "<div id='orderid' class='right-pos'>";
-            echo "Nomor Order : #";
-            echo $row['orderid'];
-            echo "</div></div>";
-            if(is_null($row['reviewcomment'])){
-                //<button  class="right-button blue-button" type="submit" name="submit" id="save-button">Save</button>
-                echo '<form action="review.php" method="get" id="input-form" autocomplete="off">';
-                echo '<div id="inputfileprofpic">';
-                echo '<input name="orderid" type="number"  id="orderid" value=';
-                echo $row['orderid'];
-                echo '>';
-                echo '<input type="number" name="userid" id="userid" value=';
-                echo $row['userid'];
-                echo '>';
-                echo '</div>';
-                echo '<button  onclick=changePage() class="blue-button right-button" id="review-button">';
-                echo 'Review';
-                echo '</button>';
-                echo '</form>';
-            }
-            echo "</div>";
-            echo "</td>";
 
+            global $conn;
+            $query = $conn->prepare("SELECT `cover`,`title`,`total`,`reviewcomment`,`orderdate`,`userid`,orderbook.id AS orderid
+            FROM orderbook INNER JOIN book ON orderbook.bookid = book.id
+            WHERE orderbook.userid = ?
+            ORDER BY orderdate DESC");
+            $userid = $SESSION->get_id();
+            $query->bind_param('i', $userid);
+            $query->execute();
+            $result = mysqli_stmt_get_result($query);
 
-            //echo $row['title'];
-            //Lakukan prosees print
             $row = $result->fetch_assoc();
-        }
+            while($row != null){
+                echo "<tr>";
+                echo "<td>";
+                echo '<div class="bookimage">';  
+                if(is_null($row['cover'])){
+                    echo '<img class="historybook" src=';
+                    echo '"statics/img/mocks/detail.png">';
+                }
+                else{
+                    echo '<img class="historybook" max-height="50" id="historybook" src=';
+                    echo $row['cover'];
+                    echo '>';
+                }
+                echo '</div>
+                </td>
+                <td>
+                    <div class="ml" id="bookinfo">
+                        <div  id="booktitle">';
+                echo $row['title'];
+                echo '</div>
+                <div id="jumlahpesanan">';
+                echo "Jumlah :".$row['total'];
+                echo "</div>";
+                echo "<div id='sudahreview'>";
+                if(is_null($row['reviewcomment'])){
+                    echo "Belum direview";
+                }
+                else{
+                    echo "Anda sudah memberikan review";
+                }
+                echo "</div>";
+                echo '</td>
+                <td>
+                    <div class="orderinfo ml right-pos"">
+                        <div id="tanggalpesan">';
+                
+                // echo $row['orderdate'];//belum format DD - bulan - YYYY
+                echo substr($row['orderdate'],8,2).' ';
+                $month = substr($row['orderdate'],5,2);
+                switch($month){
+                    case 1:
+                        $monthname="Januari";
+                        break;
+                    case 2:
+                        $monthname="Februari";
+                        break;
+                    case 3:
+                        $monthname="Maret";
+                        break;
+                    case 4:
+                        $monthname="April";
+                        break;
+                    case 5:
+                        $monthname="Mei";
+                        break;
+                    case 6:
+                        $monthname="Juni";
+                        break;
+                    case 7:
+                        $monthname="Juli";
+                        break;
+                    case 8:
+                        $monthname="Agustus";
+                        break;
+                    case 9:
+                        $monthname="September";
+                        break;
+                    case 10:
+                        $monthname="Oktober";
+                        break;
+                    case 11:
+                        $monthname="November";
+                        break;
+                    case 12:
+                        $monthname="Desember";
+                        break;
+                    default:
+                        $monthname="Januari";
+                }
+                echo $monthname,' ';
+                echo substr($row['orderdate'],0,4);
+                echo "</div>";
+                echo "<div id='orderid' class='right-pos'>";
+                echo "Nomor Order : #";
+                echo $row['orderid'];
+                echo "</div></div>";
+                if(is_null($row['reviewcomment'])){
+                    //<button  class="right-button blue-button" type="submit" name="submit" id="save-button">Save</button>
+                    echo '<form action="review.php" method="get" id="input-form" autocomplete="off">';
+                    echo '<div id="inputfileprofpic">';
+                    echo '<input name="orderid" type="number"  id="orderid" value=';
+                    echo $row['orderid'];
+                    echo '>';
+                    echo '<input type="number" name="userid" id="userid" value=';
+                    echo $row['userid'];
+                    echo '>';
+                    echo '</div>';
+                    echo '<button  onclick=changePage() class="blue-button right-button" id="review-button">';
+                    echo 'Review';
+                    echo '</button>';
+                    echo '</form>';
+                }
+                echo "</div>";
+                echo "</td>";
+
+
+                //echo $row['title'];
+                //Lakukan prosees print
+                $row = $result->fetch_assoc();
+            }
 
 
 
-    ?>
+        ?>
 
-    </table>
-
+        </table>
+    </div>    
 
     <script type="text/javascript">
         orderid.value = $user['orderid'];

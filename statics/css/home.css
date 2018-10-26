@@ -228,11 +228,12 @@ span.name {
     color: #ffffff;
     text-align: center;
     background-color: #00374c;
-    vertical-align: 100px;       
+    vertical-align: 50px;       
 }
 
 table.profile {
-    margin-left: 50px;
+    margin-left: auto;
+    margin-right: auto;
     width: 70%;
     height: 20px;
     padding: 5px;
@@ -240,16 +241,18 @@ table.profile {
 }
 
 table.profile td.icon {
-    width: 5%;
+    width: 10%;
     height: 20px;
 }
 
 table.profile td.icon > img {
+    float: right;
+    margin-right: 10px;
     height: 100%;
 }
 
 table.profile td.profiletitle {
-    width: 20%;
+    width: 30%;
     height: 20px;
     padding: 5px;
 }
@@ -258,6 +261,21 @@ table.profile td.title {
     width: 20%;
     height: 20px;
     padding: 5px;
+}
+
+table.profile td.profiledata {
+    width: 60%;
+}
+
+table.profile > caption {
+    text-align: left;
+    font-weight: 550;
+    color: #f26600;
+    font-size: 2.3em;
+    margin: 25px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-bottom: 10px;
 }
 
 #cover {
@@ -466,7 +484,6 @@ figure.reviewrating > img {
     margin-left: 10px;
 }
 
-
 .inputfile{
     display: inline-block;
 }
@@ -552,8 +569,22 @@ td.about > p.detail {
     margin-right: 40px;
 }
 
+table.ahistorybook {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.ahistorybook > caption {
+    text-align: left;
+    font-weight: bold;
+    color: #f26600;
+    font-size: 2.4em;
+    margin: 25px;
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
 #nonedisplay{
-    
     display:inline-block;
     display: none;
 }
