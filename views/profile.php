@@ -4,7 +4,7 @@
         <title>Profile</title>
         <link rel="stylesheet" type="text/css" href="statics/css/home.css">
     </head>
-    <body>
+    <body class="nunitofont">
         <div id="main">
             <div class="profile">
                 <img src="statics/img/edit-profile.png"

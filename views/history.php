@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="statics/css/home.css">
 </head>
 
-<body>
+<body class="nunitofont">
     <?php embed("main-bar"); ?>
 
     <div id="main">
@@ -84,7 +84,51 @@
                 <div class="orderinfo ml right-pos"">
                     <div id="tanggalpesan">';
             
-            echo $row['orderdate'];//belum format DD - bulan - YYYY
+            // echo $row['orderdate'];//belum format DD - bulan - YYYY
+            echo substr($row['orderdate'],8,2).' ';
+            $month = substr($row['orderdate'],5,2);
+            switch($month){
+                case 1:
+                    $monthname="Januari";
+                    break;
+                case 2:
+                    $monthname="Februari";
+                    break;
+                case 3:
+                    $monthname="Maret";
+                    break;
+                case 4:
+                    $monthname="April";
+                    break;
+                case 5:
+                    $monthname="Mei";
+                    break;
+                case 6:
+                    $monthname="Juni";
+                    break;
+                case 7:
+                    $monthname="Juli";
+                    break;
+                case 8:
+                    $monthname="Agustus";
+                    break;
+                case 9:
+                    $monthname="September";
+                    break;
+                case 10:
+                    $monthname="Oktober";
+                    break;
+                case 11:
+                    $monthname="November";
+                    break;
+                case 12:
+                    $monthname="Desember";
+                    break;
+                default:
+                    $monthname="Januari";
+            }
+            echo $monthname,' ';
+            echo substr($row['orderdate'],0,4);
             echo "</div>";
             echo "<div id='ordernumber' class='right-pos'>";
             echo "Nomor Order : #";

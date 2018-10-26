@@ -4,9 +4,10 @@
 <head>
     <title>Edit Profile</title>
     <link rel="stylesheet" type="text/css" href="statics/css/home.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 
-<body>
+<body class="nunitofont">
     <?php embed("main-bar"); setvar('page', 'editprofile'); ?>
 
     <div id="main">

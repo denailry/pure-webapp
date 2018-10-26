@@ -699,3 +699,7 @@ td.checkmark > img {
     display: inline-block;
     width: 80%;
 }
+
+.nunitofont{
+    font-family: 'Nunito', sans-serif;
+}
