@@ -50,6 +50,8 @@
                     $j=$j+1;
                 }
             }
+
+            setvar('resultCount', $numberofresults);
         }
     }
     
