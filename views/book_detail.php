@@ -1,6 +1,6 @@
 <?php
     if ($rating >= 1 && $rating <= 5) {
-        setvar('stars', 'statics/img/'.$rating.'-stars.png');
+        setvar('stars', 'statics/img/'.((int) $rating).'-stars.png');
     } else {
         setvar('stars', 'statics/img/0-stars.png');
     }
