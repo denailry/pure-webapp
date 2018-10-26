@@ -6,19 +6,19 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     </head>
     <body class="nunitofont">
-        <?php embed("main-bar"); setvar('page', 'review'); ?>
+        <?php  setvar('page', 'history'); embed("main-bar"); ?>
         <div id="main">
             <div id="box-search">
                 <div style="display: flex; margin-bottom: 50px;">
                     <div style="width: 80%;">
-                        <h2 style="text-align: left; margin-left: 0px;"><?php getvar('title'); ?></h2>
+                        <h2 style="margin-bottom: 0px; text-align: left; margin-left: 0px;"><?php getvar('title'); ?></h2>
                         <div style="text-align: left; margin-left: 0px;" id="author">
-                            <span style="font-size: 15px; font-weight: normal;">
+                            <span style="font-size: 12px; font-weight: normal; font-weight:bold;">
                                 <?php getvar('author'); ?>
                             </span>
                         </div>
                     </div>
-                    <div style="width: 20%; display: flex; align-items: center; justify-content: center;">
+                    <div style="width: 20%; display: flex; align-items: center; justify-content: center; margin-top:30px;">
                         <div class="bookimage" >
                             <img class="bookreview" src="<?php getvar('cover'); ?>" alt="cover buku">
                         </div>

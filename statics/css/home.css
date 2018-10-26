@@ -195,10 +195,6 @@ div.profile-pic > img {
     border-color: yellow;
 }
 
-#profile-picturee{
-    width:"100";
-    height:"100"; 
-}
 
 #profile-picture > img {
     display: block;
@@ -572,6 +568,7 @@ td.about > p.detail {
 table.ahistorybook {
     margin-left: auto;
     margin-right: auto;
+    height:300px;
 }
 
 table.ahistorybook > caption {
@@ -658,6 +655,7 @@ table.ahistorybook > caption {
 #author{
     margin-left: 25px;
     font-weight: bold;
+    font-size:50%;
 }
 
 .bookreview{
@@ -749,4 +747,10 @@ td.checkmark > img {
 
 .red-font{
     color:red;
+}
+
+.subjudul{
+    color:#0E2D6B;
+    font-weight: bold;
+    font-size:25px;
 }
