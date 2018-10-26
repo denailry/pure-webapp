@@ -3,7 +3,7 @@
         "September", "Oktober", "November", "Desember"];
     function formatDate($date) {
         global $months;
-        return substr($date, 8, 2).' '.$months[((int)substr($date, 5, 2)) + 1].' '.substr($date,0,4);
+        return substr($date, 8, 2).' '.$months[((int)substr($date, 5, 2)) - 1].' '.substr($date,0,4);
     }
 
     function createOrderComponent($order, $cover, $sudahreview, $formComponent) {
@@ -11,7 +11,7 @@
             <tr>
                 <td>
                     <div class="bookimage">
-                        <img class="historybook" max-height="50" id="historybook" src="'.$cover.'">`
+                        <img class="historybook" max-height="50" id="historybook" src="'.$cover.'">
                     </div>
                 </td>
                 <td>
