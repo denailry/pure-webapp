@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="statics/css/home.css">
 </head>
 
-<body>
+<body class="nunitofont">
     <?php embed("main-bar"); setvar('page', 'review'); ?>
 
     <?php

@@ -4,7 +4,7 @@
         <title>Search</title>
         <link rel="stylesheet" type="text/css" href="statics/css/home.css">
     </head>
-    <body>
+    <body class="nunitofont">
         <?php setvar('page', 'browse'); embed("main-bar"); ?>
         <div id="main">
             <div id="box-search">

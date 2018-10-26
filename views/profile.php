@@ -4,7 +4,8 @@
         <title>Profile</title>
         <link rel="stylesheet" type="text/css" href="statics/css/home.css">
     </head>
-    <body>
+    <?php embed("main-bar"); ?>
+    <body class="nunitofont">
         <div id="main">
             <div class="profile">
                 <img src="statics/img/edit-profile.png"
