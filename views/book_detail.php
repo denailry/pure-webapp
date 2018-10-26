@@ -57,46 +57,47 @@
     <body class="nunitofont">
         <?php setvar('page', 'browse'); embed("main-bar"); ?>
         <div id="main">
-            <figure class="bookcover">
-                <img id="cover" src=<?php getvar('cover'); ?>>
-                <img id='starrating' src="<?php getvar('stars') ?>">
-                <figcaption class="caption" style="font-weight: bold;"><?php getvar('rating'); ?>/5.0</figcaption>
-            </figure>
-            <div>
-                <h3><?php getvar('title'); ?></h3>
-                <span class="author"><?php getvar('author'); ?></span>
-                <span class="detail"><?php getvar('detail'); ?></span>
+            <div id="box-search" style="width: 60%; min-width: 750px;">
+                <figure class="bookcover">
+                    <img id="cover" src=<?php getvar('cover'); ?>>
+                    <img id='starrating' src="<?php getvar('stars') ?>">
+                    <figcaption class="caption" style="font-weight: bold;"><?php getvar('rating'); ?>/5.0</figcaption>
+                </figure>
+                <div>
+                    <h3><?php getvar('title'); ?></h3>
+                    <span class="author"><?php getvar('author'); ?></span>
+                    <span class="detail"><?php getvar('detail'); ?></span>
+                </div>
+                <div class="order">
+                    <span class="subheading">Order</span>
+                    <form method="POST">
+                        <span class="jumlah">Jumlah :</span>
+                        <select id='orderamount' name="orderamount">
+                            <?php echo createOptionListComponent(100) ?>
+                        </select>
+                        <button id="btn-order" class="btn-primary" type="button" onclick="startOrder(<?php getvar('id'); ?>)">Order</button>
+                    </form>
+                </div>
+                <div class="review">
+                    <span class="subheading">Reviews</span>
+                    <?php getvar('reviews') ?>                
+                </div>
             </div>
-            <div class="order">
-                <span class="subheading">Order</span>
-                <form method="POST">
-                    <span class="jumlah">Jumlah :</span>
-                    <select id='orderamount' name="orderamount">
-                        <?php echo createOptionListComponent(100) ?>
-                    </select>
-                    <button id="btn-order" class="btn-primary" type="button" onclick="startOrder(<?php getvar('id'); ?>)">Order</button>
-                </form>
+
+            <div id="modaltransaksi" class="modal">
+            <div class="modalcontent">
+                <span class="close" onclick="spanClose()">X</span>
+                <table class="contentbox">
+                    <td class="checkmark"><img src="statics/img/checkmark.png"></td>
+                    <td class="insidecontent">
+                        <p id="pesan">Pemesanan Berhasil!</p>
+                        <p id="transaksi">Nomor Transaksi: </p>
+                        <p id="nomortransaksi"></p>
+                    </td>
+                </table>
             </div>
-            <div class="review">
-                <span class="subheading">Reviews</span>
-                <?php getvar('reviews') ?>                
             </div>
         </div>
-
-        <div id="modaltransaksi" class="modal">
-          <div class="modalcontent">
-            <span class="close" onclick="spanClose()">X</span>
-            <table class="contentbox">
-                <td class="checkmark"><img src="statics/img/checkmark.png"></td>
-                <td class="insidecontent">
-                    <p id="pesan">Pemesanan Berhasil!</p>
-                    <p id="transaksi">Nomor Transaksi: </p>
-                    <p id="nomortransaksi"></p>
-                </td>
-            </table>
-          </div>
-        </div>
-
     </body>
     <script>
 
