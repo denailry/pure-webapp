@@ -830,3 +830,7 @@ td.checkmark > img {
 #submit-review {
     float: right;
 }
+
+.caption {
+    font-weight: bold;
+}

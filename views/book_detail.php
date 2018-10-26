@@ -61,7 +61,7 @@
                 <figure class="bookcover">
                     <img id="cover" src=<?php getvar('cover'); ?>>
                     <img id='starrating' src="<?php getvar('stars') ?>">
-                    <figcaption class="caption" style="font-weight: bold;"><?php getvar('rating'); ?>/5.0</figcaption>
+                    <figcaption class="caption"><?php getvar('rating'); ?>/5.0</figcaption>
                 </figure>
                 <div>
                     <h3><?php getvar('title'); ?></h3>
