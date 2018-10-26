@@ -77,9 +77,14 @@
         /*insert order*/
         $queryorder = $conn->prepare("INSERT INTO orderbook (orderdate, userid, bookid, total) VALUES (?,?,?,?)");
 
-        $date = date('Y-m-d H:i:s');
+        $timezone = 'Asia/Jakarta';
+        $timestamp = time();
+        $date = new DateTime("now", new DateTimeZone($timezone));
+        $date->setTimestamp($timestamp);
+        $result = $date->format('Y-m-d H:i:s');
+
         $user_id = $SESSION->get_id();
-        $queryorder->bind_param('siii', $date, $user_id, $id, $total);
+        $queryorder->bind_param('siii', $result, $user_id, $id, $total);
         $queryorder->execute();
         
         /*request order id*/
