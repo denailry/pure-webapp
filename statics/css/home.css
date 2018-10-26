@@ -204,15 +204,16 @@ div.profile-pic > img {
     border-color: yellow;
 }
 
-#profile-picturee{
+#profile-picture {
     height: 100px;
     width: 100px;
     border-style: solid;
+    text-align: center;
 }
 
 #profile-picturee > img {
-    object-fit: cover;
-    width: 100%;
+    height: 100px; 
+    object-fit: scale-down;
 }
 
 #profile-picture > img {

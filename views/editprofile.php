@@ -16,8 +16,8 @@
                     <caption>Edit Profile</caption>
                     <tr>
                         <td>
-                            <div id="profile-picturee">
-                                <img style="height: 100px; object-fit: scale-down;" src="<?php getvar('profilepicture'); ?>">
+                            <div id="profile-picture">
+                                <img src="<?php getvar('profilepicture'); ?>">
                             </div>
                         </td>
                         <td>
