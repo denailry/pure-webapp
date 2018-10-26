@@ -125,6 +125,11 @@ body {
     color: #b8b8b8;
 }
 
+#box-search > #failure-notif {
+    text-align: center;
+    color: red;
+}
+
 #btn-search {
     margin-top: 20px;
     float: right;
