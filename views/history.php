@@ -28,7 +28,7 @@
                     </div>
                 </td>
                 <td>
-                    <div class="orderinfo ml right-pos" style="text-align: right;">
+                    <div class="orderinfo ml">
                         <div id="tanggalpesan">
                             '.formatDate($order->orderdate).'
                         </div>
@@ -42,7 +42,7 @@
             <tr>
                 <td></td><td></td>
                 <td>
-                    <div style="height: 20px;">
+                    <div class="blank-space">
                     </div>
                 </td>
             </tr>

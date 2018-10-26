@@ -672,6 +672,7 @@ table.ahistorybook > caption {
 
 .orderinfo{
     font-weight:bold;
+    text-align: right;
 }
 
 #author{
@@ -777,3 +778,6 @@ td.checkmark > img {
     font-size:25px;
 }
 
+.blank-space {
+    height: 20px;
+}
