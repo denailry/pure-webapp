@@ -6,7 +6,6 @@
     require_once "utils/validation.php";
 
     setvar('page', 'profile');
-    embed("main-bar");
 
     $SESSION = null;
 
