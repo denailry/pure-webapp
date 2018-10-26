@@ -23,7 +23,6 @@
     $result = mysqli_stmt_get_result($query);
 
     $row = $result->fetch_assoc();
-    
     echo '<div style="display:flex;">';
     echo '<div style="display:flex flex-direction:column;">';
     echo '<div id="main">';
@@ -58,6 +57,7 @@
     echo '</textarea>';
     echo '</div>';
 
+    
     echo '<div id="inputfileprofpic">';
     echo '<input name="orderid" type="number"  id="orderid" value=';
     echo $orderid;

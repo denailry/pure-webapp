@@ -10,10 +10,10 @@
 <body class="nunitofont">
     <?php embed("main-bar"); setvar('page', 'profile'); ?>
 
-    <div id="main">
+    <div id="main" class="ml-20">
         <h2>Edit Profile<h2>
     </div>
-    <div class="ml-20">
+    <div class="ml-40">
     <form method="POST" id="input-form" autocomplete="off">
         <table class="ahistorybook">
             <col width="100">
@@ -74,6 +74,14 @@
             </tr>
             <tr>
                 <td>
+                    <div id="failure-notif" class="box-center red-font"></div>
+                    </div>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <button class="mt-20" onclick=changePage() type="button" id="back-button">Back</button>
                 </td>
                 <td>
@@ -87,6 +95,8 @@
     </form>
 </div>
 </body>
+
+<script src="statics/js/failure-notif.js"></script>
 <script type="text/javascript">
     var picture_url = document.getElementById("user-profile-picture");
     picture_url.onchange = function (event) {
@@ -147,19 +157,19 @@
         var phone = document.getElementById("user-phone-number").value;
 
         if(nama.trim() === ""){
-            window.alert("Nama kosong");
+            showFailureNotif("Name is empty");
         }
         else if(!isValidName(nama)){
-            window.alert("Nama salah");
+            showFailureNotif("Name is invalid");
         }
         else if(address.trim() === ""){
-            window.alert("Address kosong");
+            showFailureNotif("Address is empty");
         }
         else if(phone.trim() === ""){
-            window.alert("Phone number kosong");
+            showFailureNotif("Phone number is empty");
         }
         else if(!isValidPhone(phone)){
-            window.alert("Phone number salah");
+            showFailureNotif("Phone number is invalid");
         }
         else{
             document.getElementById('editProfileSubmit').click();

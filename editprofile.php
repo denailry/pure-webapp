@@ -28,7 +28,6 @@
         }   
     }
 
-    echo var_dump($_POST);
     if(isset($_POST['name'])){
         if(!$_POST['fileinput']==''){
             $user->profilepic = 'statics/img/'.basename($_POST['fileinput']).PHP_EOL;
