@@ -196,8 +196,14 @@ div.profile-pic > img {
 }
 
 #profile-picturee{
-    width:"100";
-    height:"100"; 
+    height: 100px;
+    width: 100px;
+    border-style: solid;
+}
+
+#profile-picturee > img {
+    object-fit: cover;
+    width: 100%;
 }
 
 #profile-picture > img {
