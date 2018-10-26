@@ -32,7 +32,7 @@
     <body class="nunitofont">
         <?php setvar('page', 'browse'); embed("main-bar"); ?>
         <div id="main">
-            <div id="box-search" style="width: 60%; min-height: 700px;">
+            <div class="center medium">
                 <span class="searchresult">Search Result</span>
                 <span class="numberofresult">
                     Found <p><?php getvar('resultCount') ?></p> result(s)

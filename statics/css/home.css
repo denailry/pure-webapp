@@ -97,10 +97,19 @@ body {
     margin-bottom: 0;
 }
 
-#box-search {
-    width: 40%;
-    margin: 0px auto;
+.center {
     position: relative;
+    margin: 0px auto;
+}
+
+.center.small {
+    width: 40%;
+    min-width: 500px;
+}
+
+.center.medium {
+    width: 60%; 
+    min-width: 720px;
 }
 
 #input-search {

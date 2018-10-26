@@ -8,7 +8,7 @@
     <body class="nunitofont">
         <?php  setvar('page', 'history'); embed("main-bar"); ?>
         <div id="main">
-            <div id="box-search">
+            <div class="center">
                 <div style="display: flex; margin-bottom: 50px;">
                     <div style="width: 80%;">
                         <h2 style="margin-bottom: 0px; text-align: left; margin-left: 0px;"><?php getvar('title'); ?></h2>

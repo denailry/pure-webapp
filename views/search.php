@@ -8,7 +8,7 @@
     <body class="nunitofont">
         <?php setvar('page', 'browse'); embed("main-bar"); ?>
         <div id="main">
-            <div id="box-search">
+            <div id="box-search" class="center small">
                 <h1>Search Book</h1>
                 <form id="search-form" action="/tugasbesar1_2018/search_result.php" method="GET" autocomplete="off">
                     <input id="input-search" type="text" name="input-search" placeholder="Input search terms...">

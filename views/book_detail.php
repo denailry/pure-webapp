@@ -57,7 +57,7 @@
     <body class="nunitofont">
         <?php setvar('page', 'browse'); embed("main-bar"); ?>
         <div id="main">
-            <div id="box-search" style="width: 60%; min-width: 750px;">
+            <div class="center medium">
                 <figure class="bookcover">
                     <img id="cover" src=<?php getvar('cover'); ?>>
                     <img id='starrating' src="<?php getvar('stars') ?>">
