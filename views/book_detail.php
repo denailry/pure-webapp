@@ -1,3 +1,10 @@
+<?php
+    if ($rating >= 1 && $rating <= 5) {
+        setvar('stars', 'statics/img/'.$rating.'-stars.png');
+    } else {
+        setvar('stars', 'statics/img/0-stars.png');
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,28 +17,7 @@
         <div id="main">
             <figure class="bookcover">
                 <img id="cover" src=<?php getvar('cover'); ?>>
-                <?php 
-                    switch (true) {
-                        case ($rating == 5):
-                            echo "<img id='starrating' src='statics/img/5-stars.png'>";
-                            break;
-                        case ($rating >= 4 && $rating < 5): 
-                            echo "<img id='starrating' src='statics/img/4-stars.png'>";
-                            break;
-                        case ($rating >= 3 && $rating < 4): 
-                            echo "<img id='starrating' src='statics/img/3-stars.png'>";
-                            break;
-                        case ($rating >= 2 && $rating < 3): 
-                            echo "<img id='starrating' src='statics/img/2-stars.png'>";
-                            break;
-                        case ($rating >= 1 && $rating < 2): 
-                            echo "<img id='starrating' src='statics/img/1-star.png'>";
-                            break;
-                        default:
-                            echo "<img id='starrating' src='statics/img/0-star.png'>";
-                            break;
-                    }  
-                ?>
+                <img id='starrating' src="<?php getvar('stars') ?>">
                 <figcaption class="caption" style="font-weight: bold;"><?php getvar('rating'); ?>/5.0</figcaption>
             </figure>
             <div>
