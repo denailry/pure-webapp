@@ -5,6 +5,48 @@
         setvar('stars', 'statics/img/0-stars.png');
     }
 ?>
+<?php
+    function createOrderOptionComponent($value) {
+        return '
+            <option value="'.$value.'">'.$value.'</option>
+        ';
+    }
+    function createOptionListComponent($limit) {
+        $optionList = '';
+        for ($i = 1 ; $i <= $limit; $i++) {
+            $optionList = $optionList.createOrderOptionComponent($i);
+        }
+        return $optionList;
+    }
+?>
+<?php
+    function createReviewComponent($profilepic, $username, $reviewcomment, $rating) {
+        return '
+            <table class="reviews">
+                <td class="profile_picture"><img src="'.$profilepic.'"></td>
+                <td class="comments">
+                    <span class="username">@'.$username.'</span>
+                    <span class="comment">'.$reviewcomment.'</span>
+                </td>
+                <td class="ratings">
+                    <figure class="reviewrating">
+                        <img src="statics/img/single-star.png">
+                        <figcaption>'.$rating.'/5.0</figcaption>
+                    </figure>
+                </td>
+            </table>
+        ';
+    }
+
+    $reviewList = '';
+    if ($reviews[0]['profilepic'] != 'foo'){
+        foreach ($reviews as $item) {
+            $reviewList = $reviewList.createReviewComponent($item['profilepic'], $item['username'], 
+                $item['reviewcomment'], $item['rating']);
+        }
+    }
+    setvar('reviews', $reviewList);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,40 +72,14 @@
                 <form method="POST">
                     <span class="jumlah">Jumlah :</span>
                     <select id='orderamount' name="orderamount">
-                        <?php
-                            for ($i=1;$i<=100;$i++) {
-                                ?>
-                                    <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                <?php
-                            }
-                        ?>
+                        <?php echo createOptionListComponent(100) ?>
                     </select>
                     <button id="btn-order" class="btn-primary" type="button" onclick="startOrder(<?php getvar('id'); ?>)">Order</button>
                 </form>
             </div>
             <div class="review">
                 <span class="subheading">Reviews</span>
-                <?php
-                    if ($reviews[0]['profilepic'] != 'foo'){
-                        foreach ($reviews as $item) {
-                            ?>
-                            <table class="reviews">
-                                <td class="profile_picture"><img src=<?php echo $item['profilepic']; ?>></td>
-                                <td class="comments">
-                                    <span class="username">@<?php echo $item['username']; ?></span>
-                                    <span class="comment"><?php echo $item['reviewcomment']; ?></span>
-                                </td>
-                                <td class="ratings">
-                                    <figure class="reviewrating">
-                                        <img src="statics/img/single-star.png">
-                                        <figcaption><?php echo $item['rating']; ?>/5.0</figcaption>
-                                    </figure>
-                                </td>
-                            </table>
-                            <?php
-                        }
-                    } 
-                ?>                
+                <?php getvar('reviews') ?>                
             </div>
         </div>
 
@@ -98,7 +114,6 @@
     </script>
     <script src="statics/js/ajax.js"></script>
     <script type="text/javascript">
-
         function startOrder(id){
             var sel = document.getElementById('orderamount');
             var value = sel.options[sel.selectedIndex].value;
@@ -111,8 +126,6 @@
                 'book_detail.php',
                 data,
                 function(result) {
-                    console.log(typeof result);
-                    console.log(result);
                     showNotification(result.data.orderid);
                 }
             );
