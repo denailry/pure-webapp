@@ -1,99 +1,78 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Edit Profile</title>
-    <link rel="stylesheet" type="text/css" href="statics/css/home.css">
-</head>
-
-<body class="nunitofont">
-    <?php  setvar('page', 'history');embed("main-bar"); ?>
-
-    <?php
-    global $conn;
-    $orderid = $_GET['orderid'];
-    $userid = $_GET['userid'];
-    
-    $query = $conn->prepare('SELECT `title`, `author`, `cover`
-    FROM orderbook INNER JOIN book ON orderbook.bookid = book.id
-    WHERE orderbook.id = ?;');
-    
-    $query->bind_param('i', $orderid);
-    $query->execute();
-    $result = mysqli_stmt_get_result($query);
-
-    $row = $result->fetch_assoc();
-    echo '<div style="display:flex;">';
-    echo '<div style="display:flex flex-direction:column;">';
-    echo '<div id="main">';
-    echo '<h2>'.$row["title"].'</h2>';
-    echo '</div>';
-    echo '<div id="author">';
-    echo $row["author"];
-    echo '</div>';
-    echo '</div>';
-    echo '<div class="bookimage">';
-    echo '<img class="bookreview" src=';
-    echo $row["cover"];
-    echo ' alt="cover buku">';
-    echo '</div>';
-    echo '</div>';
-    echo '<div class="ml-20">';
-    echo '<div class="subjudul">';
-    echo 'Add Rating';
-    echo '</div>';
-    echo '<form method="POST" id="input-form" autocomplete="off">';
-
-    echo '<div>';
-    echo '<input class="input-value inputbox inputreview" name="ratinginput" id="ratinginput" type="number>';
-    echo '</div>';
-
-    echo '<div class="subjudul">';
-    echo 'Add Comment';
-    echo '</div>';
-
-    echo '<div>';
-    echo '<textarea class="input-value inputbox inputreview" name="inputcomment" type="text"  id="inputcomment" rows="4">';
-    echo '</textarea>';
-    echo '</div>';
-
-    
-    echo '<div id="inputfileprofpic">';
-    echo '<input name="orderid" type="number"  id="orderid" value=';
-    echo $orderid;
-    echo '>';
-    echo '</div>';
-    
-    echo '<button onclick=changePage() type="button" id="back-button">Back</button>';
-    echo '<button onclick="validateReview()" class="mlreview blue-button" type="button" name="submitreview" id="save-button">Save</button>';
-    echo '</form>';
-
-    $row = $result->fetch_assoc();
-    
-
-    ?>
-
-</body>
-<script type="text/javascript">
-    function changePage(){
-        console.log("HTE")
-        window.location.href="profile.php";
-    }
-    
-    function validateReview(){
-        var ratinginput = document.getElementById("ratinginput").value;
-        var inputcomment = document.getElementById("inputcomment").value;
-        if(ratinginput.trim() === ""){
-            window.alert("Rating masih kosong");
+    <head>
+        <title>Edit Profile</title>
+        <link rel="stylesheet" type="text/css" href="statics/css/home.css">
+    </head>
+    <body class="nunitofont">
+        <?php embed("main-bar"); setvar('page', 'review'); ?>
+        <div id="main">
+            <div id="box-search">
+                <div style="display: flex; margin-bottom: 50px;">
+                    <div style="width: 80%;">
+                        <h2 style="text-align: left; margin-left: 0px;"><?php getvar('title'); ?></h2>
+                        <div style="text-align: left; margin-left: 0px;" id="author">
+                            <span style="font-size: 15px; font-weight: normal;">
+                                <?php getvar('author'); ?>
+                            </span>
+                        </div>
+                    </div>
+                    <div style="width: 20%; display: flex; align-items: center; justify-content: center;">
+                        <div class="bookimage" >
+                            <img class="bookreview" src="<?php getvar('cover'); ?>" alt="cover buku">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <form style="width: 100%;" method="POST" id="input-form" autocomplete="off">
+                        <div class="subjudul" style="margin-bottom: 20px;">
+                            Add Rating
+                        </div>
+                        <input id="rating" type="hidden" value="<?php getvar('rating') ?>">
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <img id="star-1" style="width: 40px;" src="statics/img/void-star.png">
+                            <img id="star-2" style="width: 40px;" src="statics/img/void-star.png">
+                            <img id="star-3" style="width: 40px;" src="statics/img/void-star.png">
+                            <img id="star-4" style="width: 40px;" src="statics/img/void-star.png">
+                            <img id="star-5" style="width: 40px;" src="statics/img/void-star.png">
+                        </div>
+                        <div class="subjudul">
+                            Add Comment
+                        </div>
+                        <div>
+                            <textarea style="width: 100%; box-sizing: border-box;" class="input-value inputbox inputreview" name="inputcomment" type="text"  id="inputcomment" rows="4">
+                            </textarea>
+                        </div>
+                        <div id="inputfileprofpic">
+                            <input name="orderid" type="number"  id="orderid" value="<?php getvar('orderid'); ?>">
+                        </div>
+                        <button onclick=changePage() type="button" id="back-button">Back</button>
+                        <button class="blue-button" style="float: right;" type="submit" name="submitreview" id="save-button">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        function changePage(){
+            console.log("HTE")
+            window.location.href="profile.php";
         }
-        else if(inputcomment === ""){
-            window.alert("Comment masih kosong");
-        }
-        else{
-            document.getElementById('input-form').submit();
-            //window.location.href="history.php";
-        }
+        
+        function validateReview(){
+            var ratinginput = document.getElementById("ratinginput").value;
+            var inputcomment = document.getElementById("inputcomment").value;
+            if(ratinginput.trim() === ""){
+                window.alert("Rating masih kosong");
+            }
+            else if(inputcomment === ""){
+                window.alert("Comment masih kosong");
+            }
+            else{
+                document.getElementById('input-form').submit();
+                //window.location.href="history.php";
+            }
 
-    }
-</script>
+        }
+    </script>
 </html>

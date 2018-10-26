@@ -13,15 +13,15 @@
     <div id="main" class="ml-20">
         <h2>Edit Profile<h2>
     </div>
-    <div class="ml-40">
-    <form method="POST" id="input-form" autocomplete="off">
+    <div class="ml-20">
+    <form method="POST" id="input-form" autocomplete="off" enctype="multipart/form-data">
         <table class="ahistorybook">
             <col width="100">
             <col width="300">
             <tr>
                 <td>
                     <div id="profile-picturee">
-                        <img height="100" width="100"  src=<?php getvar('profilepicture'); ?> border="2">
+                        <img height="100" width="100"  src="<?php getvar('profilepicture'); ?>">
                     </div>
                 </td>
                 <td>
