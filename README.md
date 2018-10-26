@@ -131,15 +131,26 @@ Jika ada pertanyaan silakan tanyakan lewat milis.
 *Setiap anggota kelompok diwajibkan untuk mengerjakan bagian tampilan dan fungsionalitas.*
 
 **Tampilan**
-1. Login : 1351xxxx, 135xxxxx
-2. Register : 135xxxxx
-3. Lanjutkan ...
+1. Login : 13516132
+2. Register : 13516132
+3. Search-Books : 13516132
+4. Search-Result : 13516129
+5. Book-Detail : 13516129
+6. Profile : 13516129
+7. Edit-Profile : 13516021
+8. History : 13516021
+9. Review : 13516021
 
 **Fungsionalitas**
-1. Login : 135xxxxx, 135xxxxx
-2. Register : 135xxxxx
-3. Fungsionalitas : 135xxxxx,135xxxxx
-4. Lanjutkan...
+1. Login : 13516132
+2. Register : 13516132
+3. Search-Books : 13516132
+4. Search-Result : 13516129
+5. Book-Detail : 13516129
+6. Profile : 13516129
+7. Edit-Profile : 13516021
+8. History : 13516021
+9. Review : 13516021
 
 ## About
 
