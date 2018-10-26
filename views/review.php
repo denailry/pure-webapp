@@ -106,7 +106,9 @@
         function validateReview() {
             var ratinginput = document.getElementById("ratinginput").value;
             var inputcomment = document.getElementById("inputcomment").value;
-            if(inputcomment.trim() === ""){
+            if (ratinginput == 'null' || ratinginput == 0) {
+                window.alert("Belum di-rating");
+            } else if(inputcomment.trim() === ""){
                 window.alert("Comment masih kosong");
             } else{
                 document.getElementById('input-form').submit();
