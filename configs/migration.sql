@@ -90,3 +90,9 @@ VALUES ('Bis Fantastis & Cara Menemukannya','Neue Salamander','statics/img/fanta
 INSERT INTO `book`(`title`, `author`, `cover`, `detail`) 
 VALUES ('Nota Hidup','Light R. D. B. ','statics/img/death_note.jpg','Buku ajaib yang berisi nama orang-orang terpilih. Jika namamu tertulis di buku ini maka kamu adalah salah satu orang yang beruntung.');
 UPDATE version SET `number` = 8;
+
+-- Version 9
+ALTER TABLE orderbook
+DROP COLUMN ordernumber;
+
+UPDATE version SET `number` = 9;
