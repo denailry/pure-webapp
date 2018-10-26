@@ -277,6 +277,11 @@ figure > img {
     object-fit: contain;
 }
 
+figure > img#starrating {
+    display: inline-block;
+    width: 100%;
+}
+
 figure.caption {
     display: block;
 }
