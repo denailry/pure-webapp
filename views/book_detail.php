@@ -3,6 +3,7 @@
     <head>
         <title>Book Detail</title>
         <link rel="stylesheet" type="text/css" href="statics/css/home.css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     </head>
     <body class="nunitofont">
         <?php setvar('page', 'browse'); embed("main-bar"); ?>

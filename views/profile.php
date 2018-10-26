@@ -3,6 +3,7 @@
     <head>
         <title>Profile</title>
         <link rel="stylesheet" type="text/css" href="statics/css/home.css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     </head>
     <?php embed("main-bar"); ?>
     <body class="nunitofont">

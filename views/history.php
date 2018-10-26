@@ -4,6 +4,7 @@
 <head>
     <title>History</title>
     <link rel="stylesheet" type="text/css" href="statics/css/home.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 
 <body class="nunitofont">

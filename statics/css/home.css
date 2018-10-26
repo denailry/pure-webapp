@@ -234,14 +234,14 @@ span.name {
 table.profile {
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 60%;
     height: 20px;
     padding: 5px;
     font-size: 1.2em;   
 }
 
 table.profile td.icon {
-    width: 10%;
+    width: 7%;
     height: 20px;
 }
 
@@ -252,7 +252,7 @@ table.profile td.icon > img {
 }
 
 table.profile td.profiletitle {
-    width: 30%;
+    width: 20%;
     height: 20px;
     padding: 5px;
 }
@@ -269,9 +269,9 @@ table.profile td.profiledata {
 
 table.profile > caption {
     text-align: left;
-    font-weight: 550;
+    font-weight: bold;
     color: #f26600;
-    font-size: 2.3em;
+    font-size: 2em;
     margin: 25px;
     margin-top: 0px;
     margin-left: 0px;
@@ -578,7 +578,7 @@ table.ahistorybook > caption {
     text-align: left;
     font-weight: bold;
     color: #f26600;
-    font-size: 2.4em;
+    font-size: 4em;
     margin: 25px;
     margin-left: 0px;
     margin-bottom: 10px;
