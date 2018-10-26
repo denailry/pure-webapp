@@ -41,9 +41,9 @@
         $user->phone = $_POST['phone-number'];
         $user->address = $_POST['address'];
         $user->commit();
-        header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018'.'/profile.php');
+        header('Location: '.'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/profile');
         die();  
     }
 
-    include 'views/editprofile.php';
+    include 'views/edit-profile.php';
 ?>

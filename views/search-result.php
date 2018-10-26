@@ -9,7 +9,7 @@
                     <p class="detail">'.$book['detail'].'</p>
                 </td>
             </table>
-            <button id="btn-detail" class="btn-primary" onclick="window.location.href=\'book_detail.php?book_id='.$book['id'].'\'">Detail</button>
+            <button id="btn-detail" class="btn-primary" onclick="window.location.href=\'book-detail?book_id='.$book['id'].'\'">Detail</button>
         ';
     }
 

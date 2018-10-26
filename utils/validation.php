@@ -23,7 +23,7 @@
     function force_login() {
         global $SESSION;
         if ($SESSION == null) {
-            header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018/login.php');
+            header('Location: '.'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/login');
             die();
         }   
     }

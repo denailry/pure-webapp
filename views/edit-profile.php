@@ -103,7 +103,7 @@
         }
 
         function changePage() {
-            window.location.href = "profile.php";
+            window.location.href = "profile";
         }
 
         function isValidPhone(phone) {

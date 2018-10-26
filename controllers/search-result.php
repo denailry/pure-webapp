@@ -55,5 +55,5 @@
         }
     }
     
-    include "views/search_result.php";	
+    include "views/search-result.php";	
 ?>

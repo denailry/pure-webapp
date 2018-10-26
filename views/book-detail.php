@@ -124,7 +124,7 @@
 
             let ajax = {};
             ajax = requestPost(
-                'book_detail.php',
+                'book-detail',
                 data,
                 function(result) {
                     showNotification(result.data.orderid);

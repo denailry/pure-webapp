@@ -7,7 +7,7 @@
     require_once "utils/page_var.php";
 
     if ($SESSION != null) {
-        header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018');
+        header('Location: '.'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']);
         die();  
     }
 
@@ -24,7 +24,7 @@
             $userId = User::verify($_POST['username'], $_POST['password']);
             if ($userId != -1) {
                 if (setup_session($userId)) {
-                    header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018');
+                    header('Location: '.'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']);
                     die();   
                 } else {
                     setvar('failure', 'please try again');

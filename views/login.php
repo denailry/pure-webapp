@@ -30,7 +30,7 @@
                     <div id="failure-notif" class="box-center">
                     </div>
                     <div id="box-link">
-                        <a href="register.php">Don't have an account?</a>
+                        <a href="register">Don't have an account?</a>
                     </div>
                     <div class="box-center">
                         <button id="submit" name="submit">LOGIN</button>

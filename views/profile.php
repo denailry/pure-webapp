@@ -10,7 +10,7 @@
         <div id="main">
             <div class="profile">
                 <img src="statics/img/edit-profile.png"
-                    onclick="window.location.href='editprofile.php';">
+                    onclick="window.location.href='edit-profile';">
             </div>
             <div class="profile-pic">
                 <img src=<?php getvar('profilepicture'); ?>>>

@@ -7,6 +7,15 @@ Pada tugas besar ini, Anda diminta untuk membuat aplikasi *toko buku online* **b
 
 Anda diminta untuk membuat tampilan sedemikian hingga mirip dengan tampilan pada contoh. Website yang diminta tidak responsive. Desain tampilan tidak perlu dibuat indah. Icon dan jenis font tidak harus sama dengan contoh. Warna font, garis pemisah, dan perbedaan ukuran font harus terlihat sesuai contoh. Format rating dan waktu harus terlihat sesuai contoh. Perhatikan juga **tata letak** elemen-elemen.
 
+## Mempersiapkan Aplikasi
+Aplikasi menggunakan basis data MySQL, sehingga sebelum aplikasi dimulai, service MySQL perlu dijalankan. MySQL perlu memiliki skema basis data yang digunakan pada aplikasi ini. Untuk itu, skema basis data dapat dibuat dengan cara mengeksekusi **configs/migration.sql** pada MySQL.
+
+## Memulai Aplikasi
+Aplikasi ini menggunakan built-in web server milik PHP (web server apa yang harus digunakan tidak dispesifikasikan pada instruksi tugas besar). Untuk memulai program, perintah berikut perlu dijalankan:
+```shell
+php -S localhost:8000 -R index.php
+```
+
 ## Anggota Tim
 - Mathias Novianto      | 13516021 
 - Prisila Michelle      | 13516129 

@@ -102,6 +102,6 @@
     }
 
     if ($RETURN_HTML) {
-        include "views/book_detail.php";
+        include "views/book-detail.php";
     }
 ?>

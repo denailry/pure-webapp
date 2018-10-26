@@ -82,7 +82,7 @@
                     <div id="failure-notif" class="box-center">
                     </div>
                     <div id="box-link">
-                        <a href="login.php">Already have an account?</a>
+                        <a href="login">Already have an account?</a>
                     </div>
                     <button id="submitter" class="hidden" type="submit" name="submit"></button>
                     <div class="box-center">
@@ -292,7 +292,7 @@
                 ajax[elementId] = null;
             }
             ajax[elementId] = requestPost(
-                'register.php',
+                'register',
                 data,
                 function(result) {
                     if (result.status == 0) {

@@ -20,7 +20,7 @@
                             setvar('failure', 'email is exist');
                             break; 
                         default:
-                            header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018/login.php');
+                            header('Location: '.'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/login');
                             die();
                     }
                 } catch (Exception $e) {

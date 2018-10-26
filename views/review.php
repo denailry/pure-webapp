@@ -100,7 +100,7 @@
     </script>
     <script type="text/javascript">
         function changePage(){
-            window.location.href="history.php";
+            window.location.href="history";
         }
         
         function validateReview() {

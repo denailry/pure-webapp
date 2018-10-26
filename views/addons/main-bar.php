@@ -16,24 +16,24 @@
             <img id="logout" style="height: 100%; cursor: pointer;" src="statics/img/logout.jpg" 
                 onmouseover="hover(true)"
                 onmouseout="hover(false)"
-                onclick="window.location.href='logout.php';">
+                onclick="window.location.href='logout';">
         </div class="top-bar-item top-bar-info">
         <div id="menu-hi" class="top-bar-item top-bar-info">
             Hi, <?php getvar('username') ?>
         </div>
     </div>
     <div id="menu-bar">
-        <div id="menu-browse" style="border-right: 2px solid #000000;" onclick="window.location.href = 'index.php'">
+        <div id="menu-browse" style="border-right: 2px solid #000000;" onclick="window.location.href = '/'">
             <div>
                 <p>Browse</p>
             </div>
         </div>
-        <div id="menu-history" style="border-right: 2px solid #000000;" onclick="window.location.href = 'history.php'">
+        <div id="menu-history" style="border-right: 2px solid #000000;" onclick="window.location.href = 'history'">
             <div>
                 <p>History</p>
             </div>
         </div>
-        <div id="menu-profile" onclick="window.location.href = 'profile.php'">
+        <div id="menu-profile" onclick="window.location.href = 'profile'">
             <div>
                 <p>Profile</p>
             </div>

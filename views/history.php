@@ -51,7 +51,7 @@
 
     function createReviewFormComponenet($orderid) {
         return '
-            <form action="review.php" method="get" id="input-form" autocomplete="off">
+            <form action="review" method="get" id="input-form" autocomplete="off">
                 <div id="inputfileprofpic">
                     <input name="orderid" type="number"  id="orderid" value='.$orderid.'>
                 </div>

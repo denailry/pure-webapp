@@ -41,7 +41,7 @@
         $query->bind_param('isi', $rating,$reviewcomment,$orderid);
         $query->execute();
         $result = mysqli_stmt_get_result($query);
-        header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018'.'/history.php');
+        header('Location: '.'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/history');
         die();  
     }
     include 'views/review.php';

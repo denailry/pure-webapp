@@ -10,6 +10,6 @@
         $SESSION->remove();
     }
 
-    header('Location: '.'http://'.$_SERVER['SERVER_NAME'].'/tugasbesar1_2018');
+    header('Location: '.'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']);
     die();  
 ?>
