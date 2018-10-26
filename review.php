@@ -19,8 +19,8 @@
         setvar('address',$user->address);
         setvar('phone',$user->phone);
     }
-
-    if(isset($_POST["submitreview"])){
+    if(isset($_POST["ratinginput"])){
+        
         global $conn;
         $orderid = 
         $rating = $_POST['ratinginput'];

@@ -7,7 +7,7 @@
 </head>
 
 <body class="nunitofont">
-    <?php embed("main-bar"); setvar('page', 'review'); ?>
+    <?php  setvar('page', 'history');embed("main-bar"); ?>
 
     <?php
     global $conn;
@@ -65,7 +65,7 @@
     echo '</div>';
     
     echo '<button onclick=changePage() type="button" id="back-button">Back</button>';
-    echo '<button  class="mlreview blue-button" type="submit" name="submitreview" id="save-button">Save</button>';
+    echo '<button onclick="validateReview()" class="mlreview blue-button" type="button" name="submitreview" id="save-button">Save</button>';
     echo '</form>';
 
     $row = $result->fetch_assoc();
@@ -78,6 +78,22 @@
     function changePage(){
         console.log("HTE")
         window.location.href="profile.php";
+    }
+    
+    function validateReview(){
+        var ratinginput = document.getElementById("ratinginput").value;
+        var inputcomment = document.getElementById("inputcomment").value;
+        if(ratinginput.trim() === ""){
+            window.alert("Rating masih kosong");
+        }
+        else if(inputcomment === ""){
+            window.alert("Comment masih kosong");
+        }
+        else{
+            document.getElementById('input-form').submit();
+            //window.location.href="history.php";
+        }
+
     }
 </script>
 </html>

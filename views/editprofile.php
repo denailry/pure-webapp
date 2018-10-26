@@ -8,7 +8,7 @@
 </head>
 
 <body class="nunitofont">
-    <?php embed("main-bar"); setvar('page', 'editprofile'); ?>
+    <?php embed("main-bar"); setvar('page', 'profile'); ?>
 
     <div id="main">
         <h2>Edit Profile<h2>
@@ -77,7 +77,8 @@
                     <button class="mt-20" onclick=changePage() type="button" id="back-button">Back</button>
                 </td>
                 <td>
-                    <button class="right-button blue-button mt-20" type="submit" name="submit" id="save-button">Save</button>
+                    <button onclick="validateEditProfile()" class="right-button blue-button mt-20" type="button" name="submit" id="save-button">Save</button>
+                    <button type="submit" id="editProfileSubmit"></button>
                 </td>
         </table>
 
@@ -101,6 +102,72 @@
         console.log("HTE")
         window.location.href = "profile.php";
     }
+
+    function isValidPhone(phone) {
+            if (phone.length < 9 || phone.length > 12) {
+                return false;
+            }
+            let i = phone.length;
+            while (i--) {
+                letter = phone[i];
+                if (!isNumber(letter)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+    function isValidName(name) {
+        let i = name.length;
+        if(i>20){
+            return false;
+        }
+        while (i--) {
+            letter = name[i];
+            if (!isAlphabet(letter) && letter != ' ') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    
+    function isAlphabet(letter) {
+            return (letter >= 'a' && letter <= 'z') || 
+                (letter >= 'A' && letter <= 'Z');
+        }
+
+    function isNumber (letter) {
+        return (letter >= '0' && letter <= '9');
+    }
+
+    function validateEditProfile(){
+        var nama = document.getElementById("user-name").value;
+        var address = document.getElementById("user-address").value;
+        var phone = document.getElementById("user-phone-number").value;
+
+        if(nama.trim() === ""){
+            window.alert("Nama kosong");
+        }
+        else if(!isValidName(nama)){
+            window.alert("Nama salah");
+        }
+        else if(address.trim() === ""){
+            window.alert("Address kosong");
+        }
+        else if(phone.trim() === ""){
+            window.alert("Phone number kosong");
+        }
+        else if(!isValidPhone(phone)){
+            window.alert("Phone number salah");
+        }
+        else{
+            document.getElementById('editProfileSubmit').click();
+            //document.getElementById('input-form').submit();
+        }
+    }
+
+
 </script>
 
 </html>

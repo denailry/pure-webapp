@@ -708,3 +708,7 @@ td.checkmark > img {
 .nunitofont{
     font-family: 'Nunito', sans-serif;
 }
+
+#editProfileSubmit{
+    display: none;
+}
