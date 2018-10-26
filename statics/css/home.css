@@ -195,6 +195,19 @@ div.profile-pic > img {
     border-color: yellow;
 }
 
+<<<<<<< HEAD
+=======
+#profile-picturee{
+    height: 100px;
+    width: 100px;
+    border-style: solid;
+}
+
+#profile-picturee > img {
+    object-fit: cover;
+    width: 100%;
+}
+>>>>>>> 8612253bb4c15680137482fda394a3f9895dd8fe
 
 #profile-picture > img {
     display: block;
