@@ -68,12 +68,6 @@
 
     if (isset($_POST['orderandid'])) {
         $conn->close();
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "tugasbesar1_2018";
-        $current_version = 6;
-        
         $conn = new mysqli($servername, $username, $password, $dbname);
 
         $array = explode('.',$_POST['orderandid']);
