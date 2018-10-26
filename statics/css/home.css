@@ -204,14 +204,14 @@ div.profile-pic > img {
     border-color: yellow;
 }
 
-#profile-picture {
+#edit-picture {
     height: 100px;
     width: 100px;
     border-style: solid;
     text-align: center;
 }
 
-#profile-picturee > img {
+#edit-picture > img {
     height: 100px; 
     object-fit: scale-down;
 }

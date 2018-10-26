@@ -16,7 +16,7 @@
                     <caption>Edit Profile</caption>
                     <tr>
                         <td>
-                            <div id="profile-picture">
+                            <div id="edit-picture">
                                 <img src="<?php getvar('profilepicture'); ?>">
                             </div>
                         </td>
