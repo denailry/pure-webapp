@@ -675,7 +675,7 @@ table.ahistorybook > caption {
     text-align: right;
 }
 
-#author{
+#author {
     margin-left: 25px;
     font-weight: bold;
     font-size:50%;
@@ -780,4 +780,53 @@ td.checkmark > img {
 
 .blank-space {
     height: 20px;
+}
+
+#review-header {
+    margin-top: 40px;
+    display: flex; 
+    margin-bottom: 50px;
+}
+
+#review-header #header-left {
+    width: 80%;
+}
+
+#review-header #header-left * {
+    margin: 0px;
+}
+
+#review-header #header-left #author {
+    font-size: 12px; 
+    font-weight: normal; 
+    font-weight:bold;
+}
+
+#review-header #header-right {
+    width: 20%;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.inline-star {
+    display: inline
+}
+
+.inline-star img {
+    width: 40px;
+}
+
+#star-wrapper {
+    text-align: center; 
+    margin-bottom: 30px;
+}
+
+#inputcomment {
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+#submit-review {
+    float: right;
 }

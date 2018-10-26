@@ -8,56 +8,54 @@
     <body class="nunitofont">
         <?php  setvar('page', 'history'); embed("main-bar"); ?>
         <div id="main">
-            <div class="center">
-                <div style="display: flex; margin-bottom: 50px;">
-                    <div style="width: 80%;">
-                        <h2 style="margin-bottom: 0px; text-align: left; margin-left: 0px;"><?php getvar('title'); ?></h2>
-                        <div style="text-align: left; margin-left: 0px;" id="author">
-                            <span style="font-size: 12px; font-weight: normal; font-weight:bold;">
-                                <?php getvar('author'); ?>
-                            </span>
+            <div class="center small">
+                <div id="review-header">
+                    <div id="header-left">
+                        <h2><?php getvar('title'); ?></h2>
+                        <div id="author">
+                            <span><?php getvar('author'); ?></span>
                         </div>
                     </div>
-                    <div style="width: 20%; display: flex; align-items: center; justify-content: center; margin-top:30px;">
+                    <div id="header-right">
                         <div class="bookimage" >
                             <img class="bookreview" src="<?php getvar('cover'); ?>" alt="cover buku">
                         </div>
                     </div>
                 </div>
                 <div>
-                    <form style="width: 100%;" method="POST" id="input-form" autocomplete="off">
-                        <div class="subjudul" style="margin-bottom: 20px;">
+                    <form method="POST" id="input-form" autocomplete="off">
+                        <div class="subjudul mb-20">
                             Add Rating
                         </div>
                         <input id="ratinginput" name="ratinginput" type="hidden" value="<?php getvar('rating') ?>">
-                        <div style="text-align: center; margin-bottom: 30px;">
-                            <div id="star-1-wrapper" style="display: inline">
-                                <img id="star-1" style="width: 40px;" src="statics/img/void-star.png">
+                        <div id="star-wrapper">
+                            <div id="star-1-wrapper" class="inline-star">
+                                <img id="star-1" src="statics/img/void-star.png">
                             </div>
-                            <div id="star-2-wrapper" style="display: inline">
-                                <img id="star-2" style="width: 40px;" src="statics/img/void-star.png">
+                            <div id="star-2-wrapper" class="inline-star">
+                                <img id="star-2" src="statics/img/void-star.png">
                             </div>
-                            <div id="star-3-wrapper" style="display: inline">
-                                <img id="star-3" style="width: 40px;" src="statics/img/void-star.png">
+                            <div id="star-3-wrapper" class="inline-star">
+                                <img id="star-3" src="statics/img/void-star.png">
                             </div>
-                            <div id="star-4-wrapper" style="display: inline">
-                                <img id="star-4" style="width: 40px;" src="statics/img/void-star.png">
+                            <div id="star-4-wrapper" class="inline-star">
+                                <img id="star-4" src="statics/img/void-star.png">
                             </div>
-                            <div id="star-5-wrapper" style="display: inline">
-                                <img id="star-5" style="width: 40px;" src="statics/img/void-star.png">
+                            <div id="star-5-wrapper" class="inline-star">
+                                <img id="star-5" src="statics/img/void-star.png">
                             </div>
                         </div>
                         <div class="subjudul">
                             Add Comment
                         </div>
                         <div>
-                            <textarea style="width: 100%; box-sizing: border-box;" class="input-value inputbox inputreview" name="inputcomment" type="text"  id="inputcomment" rows="4"></textarea>
+                            <textarea id="inputcomment"  class="input-value inputbox inputreview" name="inputcomment" type="text" rows="4"></textarea>
                         </div>
                         <div id="inputfileprofpic">
                             <input name="orderid" type="number"  id="orderid" value="<?php getvar('orderid'); ?>">
                         </div>
                         <button onclick=changePage() type="button" id="back-button">Back</button>
-                        <button class="blue-button" style="float: right;" type="button" name="submitreview" id="save-button" onclick="validateReview()">Submit</button>
+                        <button id="submit-review" class="blue-button" type="button" name="submitreview" onclick="validateReview()">Submit</button>
                     </form>
                 </div>
             </div>
