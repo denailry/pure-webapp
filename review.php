@@ -29,7 +29,6 @@
         setvar('rating',$order->rating);
     }
     if(isset($_POST["ratinginput"])){
-        
         global $conn;
         $orderid = 
         $rating = $_POST['ratinginput'];

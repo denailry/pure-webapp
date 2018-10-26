@@ -29,51 +29,90 @@
                         <div class="subjudul" style="margin-bottom: 20px;">
                             Add Rating
                         </div>
-                        <input id="rating" type="hidden" value="<?php getvar('rating') ?>">
+                        <input id="ratinginput" name="ratinginput" type="hidden" value="<?php getvar('rating') ?>">
                         <div style="text-align: center; margin-bottom: 30px;">
-                            <img id="star-1" style="width: 40px;" src="statics/img/void-star.png">
-                            <img id="star-2" style="width: 40px;" src="statics/img/void-star.png">
-                            <img id="star-3" style="width: 40px;" src="statics/img/void-star.png">
-                            <img id="star-4" style="width: 40px;" src="statics/img/void-star.png">
-                            <img id="star-5" style="width: 40px;" src="statics/img/void-star.png">
+                            <div id="star-1-wrapper" style="display: inline">
+                                <img id="star-1" style="width: 40px;" src="statics/img/void-star.png">
+                            </div>
+                            <div id="star-2-wrapper" style="display: inline">
+                                <img id="star-2" style="width: 40px;" src="statics/img/void-star.png">
+                            </div>
+                            <div id="star-3-wrapper" style="display: inline">
+                                <img id="star-3" style="width: 40px;" src="statics/img/void-star.png">
+                            </div>
+                            <div id="star-4-wrapper" style="display: inline">
+                                <img id="star-4" style="width: 40px;" src="statics/img/void-star.png">
+                            </div>
+                            <div id="star-5-wrapper" style="display: inline">
+                                <img id="star-5" style="width: 40px;" src="statics/img/void-star.png">
+                            </div>
                         </div>
                         <div class="subjudul">
                             Add Comment
                         </div>
                         <div>
-                            <textarea style="width: 100%; box-sizing: border-box;" class="input-value inputbox inputreview" name="inputcomment" type="text"  id="inputcomment" rows="4">
-                            </textarea>
+                            <textarea style="width: 100%; box-sizing: border-box;" class="input-value inputbox inputreview" name="inputcomment" type="text"  id="inputcomment" rows="4"></textarea>
                         </div>
                         <div id="inputfileprofpic">
                             <input name="orderid" type="number"  id="orderid" value="<?php getvar('orderid'); ?>">
                         </div>
                         <button onclick=changePage() type="button" id="back-button">Back</button>
-                        <button class="blue-button" style="float: right;" type="submit" name="submitreview" id="save-button">Submit</button>
+                        <button class="blue-button" style="float: right;" type="button" name="submitreview" id="save-button" onclick="validateReview()">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     </body>
     <script type="text/javascript">
-        function changePage(){
-            console.log("HTE")
-            window.location.href="profile.php";
-        }
-        
-        function validateReview(){
-            var ratinginput = document.getElementById("ratinginput").value;
-            var inputcomment = document.getElementById("inputcomment").value;
-            if(ratinginput.trim() === ""){
-                window.alert("Rating masih kosong");
-            }
-            else if(inputcomment === ""){
-                window.alert("Comment masih kosong");
-            }
-            else{
-                document.getElementById('input-form').submit();
-                //window.location.href="history.php";
+        const VOID_STAR = 0;
+        const FILLED_STAR = 1;
+
+        let star = ['statics/img/void-star.png', 'statics/img/filled-star.png'];
+        let current_src = [VOID_STAR, VOID_STAR, VOID_STAR, VOID_STAR, VOID_STAR];
+
+        for (let i = 1; i <= 5; i++) {
+            document.getElementById('star-' + i + '-wrapper').onmouseover = function() {
+                for (let j = 1; j <= 5; j++) {
+                    if (j <= i) {
+                        document.getElementById('star-' + j).setAttribute('src', star[FILLED_STAR]);
+                    } else {
+                        document.getElementById('star-' + j).setAttribute('src', star[VOID_STAR]);
+                    }
+                }
             }
 
+            document.getElementById('star-' + i + '-wrapper').onmouseout = function() {
+                for (let j = 1; j <= 5; j++) {
+                    document.getElementById('star-' + j).setAttribute('src', star[current_src[j-1]]);
+                }
+            }
+
+            document.getElementById('star-' + i + '-wrapper').onclick = function() {
+                for (let j = 1; j <= 5; j++) {
+                    if (j <= i) {
+                        current_src[j-1] = FILLED_STAR;
+                    } else {
+                        current_src[j-1] = VOID_STAR;
+                    }
+                }
+                document.getElementById('ratinginput').value = i;
+            }
+        }
+        
+    </script>
+    <script type="text/javascript">
+        function changePage(){
+            window.location.href="history.php";
+        }
+        
+        function validateReview() {
+            var ratinginput = document.getElementById("ratinginput").value;
+            var inputcomment = document.getElementById("inputcomment").value;
+            if(inputcomment.trim() === ""){
+                window.alert("Comment masih kosong");
+            } else{
+                document.getElementById('input-form').submit();
+            }
         }
     </script>
 </html>
